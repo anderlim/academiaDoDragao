@@ -1,0 +1,39 @@
+/* session pra ver a tela de fundo */
+
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow-x: hidden;
+}
+
+.session {
+    width: 100%;
+    height: 20vh;
+    background-image: url('../../images/dragon.jpeg'); /* Substitua 'sua-imagem-de-fundo.jpg' pelo caminho da sua imagem */
+    background-size: cover;
+    background-attachment: fixed; /* Mantém a imagem de fundo fixa */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white; /* Cor do texto */
+    text-align: center;
+    font-size: 24px;
+}
+
+/* Logo no menu */
+.logo img {
+    height: 50px; /* Altura da imagem da logo */
+    width: auto; /* Largura ajustável conforme a altura */
+    margin-right: 20px; /* Espaçamento à direita da logo */
+}
+
+/* ajuste de tags */
+#raca-classe{
+    font-size: 1cap;
+}
+
+#dados-rpg{
+    width: 25%;
+    height: 25%;
+}
