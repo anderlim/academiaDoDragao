@@ -2659,6 +2659,10 @@
 		margin-top: -0.6em;
 	}
 
+	.big-letter{
+		font-size: 1.25em;
+	}
+
 	header p {
 		color: #676d71;
 	}
