@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dicenator</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,400;0,700;1,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <main>
+        <section class="content">
+            <table>
+                <tr>
+                    <td colspan="4"><input type='text' class='display' id="diceInput" placeholder="Coloque os dados (ex: 2d20+3+1d20)"></td>
+                </tr>
+                <tr>
+                    <td><button class="btn btn-clear">C</button></td>
+                    <td><button class="btn btn-num">(</button></td>
+                    <td><button class="btn btn-num">)</button></td>
+                    <td><button class="btn btn-del">&laquo;</button></td>
+                </tr>
+                <tr>
+                    <td><button class="btn btn-num">7</button></td>
+                    <td><button class="btn btn-num">8</button></td>
+                    <td><button class="btn btn-num">9</button></td>
+                    <td><button class="btn btn-num">*</button></td>
+                </tr>
+                <tr>
+                    <td><button class="btn btn-num">4</button></td>
+                    <td><button class="btn btn-num">5</button></td>
+                    <td><button class="btn btn-num">6</button></td>
+                    <td><button class="btn btn-num">+</button></td>
+                </tr>
+                <tr>
+                    <td><button class="btn btn-num">1</button></td>
+                    <td><button class="btn btn-num">2</button></td>
+                    <td><button class="btn btn-num">3</button></td>
+                    <td><button class="btn btn-num">-</button></td>
+                </tr>
+                <tr>
+                    <td><button class="btn btn-num">.</button></td>
+                    <td><button class="btn btn-num">0</button></td>
+                    <td><button class="btn btn-num">/</button></td>
+                    <td><button class="btn btn-num">d</button></td>
+                </tr>
+                <tr>
+                    <td colspan="4">
+                        <button class="btn btn-eq">
+                            <i class="fas fa-dice-d20"></i>
+                        </button>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="4">
+                        <button class="btn btn-hist">Mostrar Histórico</button>
+                    </td>
+                </tr>
+            </table>
+        </section>
+        <section class="content">
+            <h2 class="h2-dicenator">Resultado</h2>
+            <p class="result" id="result"></p>
+        </section>
+        <section class="content historic-container" id="history-section" style="display: none;">
+            <h2 class="h2-dicenator">Histórico</h2>
+            <div class="historic" id="historic"></div>
+        </section>
+    </main>
+    <!-- Scripts -->
+    <script src="assets/js/diceRoll.js"></script>
+    <script src="assets/js/calculadora.js"></script>
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/jquery.scrolly.min.js"></script>
+    <script src="assets/js/skel.min.js"></script>
+    <script src="assets/js/util.js"></script>
+    <script src="assets/js/main.js"></script>
+</body>
+</html>
