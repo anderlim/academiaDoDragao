@@ -38,15 +38,15 @@ const NavigationBar = ({ user, handleThemeSwitch, theme }) => {
       <Navbar.Brand href="/">
         <ForumIcon className="mr-3 h-6 sm:h-9 dark:fill-white	" />
         <span className="self-center whitespace-nowrap text-xl font-semibold dark:text-white">
-          Forum App
+          Forum Academia do Dragão
         </span>
       </Navbar.Brand>
       <Navbar.Toggle className="justify-left" />
       <Navbar.Collapse>
-        <Navbar.Link href="/about">About this App</Navbar.Link>
+        <Navbar.Link href="/about">Sobre este app</Navbar.Link>
 
-        {user === null && <Navbar.Link href="/login">Create Post</Navbar.Link>}
-        {user && <Navbar.Link href="/create">Create Post</Navbar.Link>}
+        {user === null && <Navbar.Link href="/login">Criar Post</Navbar.Link>}
+        {user && <Navbar.Link href="/create">Criar Post</Navbar.Link>}
 
         {user === null && (
           <Navbar.Link className="font-bold text-sky-400" href="/login">

@@ -28,7 +28,7 @@ const NewBlog = () => {
   const addNewBlog = async (blogObject) => {
     try {
       const notif1 = {
-        message: `Post was successfully added`,
+        message: `Post foi adicionado com sucesso`,
         type: "success",
       };
       await dispatch(createBlog(blogObject));
@@ -37,7 +37,7 @@ const NewBlog = () => {
       dispatch(setNotification(notif1, 2500));
     } catch (exception) {
       const notif2 = {
-        message: `Cannot add post`,
+        message: `Não pode adicionado este post`,
         type: "failure",
       };
       dispatch(setNotification(notif2, 2500));

@@ -31,11 +31,11 @@ const Blog = ({ blog }) => {
   const handleDeleteBlog = async (id) => {
     const blog1 = blogs.filter((b) => b.id === id);
     const title = blog1[0].title;
-    if (window.confirm(`Do you want to delete ${title}?`)) {
+    if (window.confirm(`Você quer deletar ${title}?`)) {
       try {
         await dispatch(deleteBlog(id));
         const notif = {
-          message: "Successfully deleted",
+          message: "Deletado com sucesso",
           type: "success",
         };
         dispatch(setNotification(notif, 2500));

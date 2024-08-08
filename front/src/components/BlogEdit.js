@@ -36,7 +36,7 @@ const BlogEdit = ({ blog }) => {
   const editNewBlog = async (blogObject) => {
     try {
       const notif1 = {
-        message: `Post was successfully edited`,
+        message: `Post foi editado com sucesso`,
         type: "success",
       };
       await dispatch(updateBlog(blogObject));
@@ -45,7 +45,7 @@ const BlogEdit = ({ blog }) => {
       dispatch(setNotification(notif1, 2500));
     } catch (exception) {
       const notif2 = {
-        message: `Cannot edit post`,
+        message: `Não pode editar este post`,
         type: "failure",
       };
       dispatch(setNotification(notif2, 2500));

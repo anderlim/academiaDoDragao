@@ -48,11 +48,11 @@ const BlogView = ({ blog }) => {
     if (!user) {
       navigate("/login");
     }
-    if (window.confirm(`Do you want to delete this post?`)) {
+    if (window.confirm(`Você quer deletar este post?`)) {
       try {
         await dispatch(deleteBlog(id));
         const notif = {
-          message: "Successfully deleted post",
+          message: "Post deletado com sucesso",
           type: "success",
         };
         dispatch(setNotification(notif, 2500));
@@ -80,7 +80,7 @@ const BlogView = ({ blog }) => {
     try {
       await dispatch(commentBlog(comment, id));
       const notif1 = {
-        message: "Comment added successfully",
+        message: "Comentário adicionado com sucesso",
         type: "success",
       };
       dispatch(setNotification(notif1, 2500));
@@ -117,7 +117,7 @@ const BlogView = ({ blog }) => {
                       {blog.user.username || user1.username}
                     </a>
                     <p className="text-base font-light text-gray-500 dark:text-gray-400">
-                      Posted on{" "}
+                      Postado em{" "}
                       {new Date(blog.dateCreated).toLocaleDateString("en-GB")}
                     </p>
                     <p className="inline mr-2 text-sm font-light text-gray-500 dark:text-gray-400">
