@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ficha de Personagem D&D 5e</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+</head>
+<body>
+    <div class="character-sheet">
+        <header>
+            <h1>Ficha de Personagem</h1>
+        </header>
+
+        <section class="basic-info">
+            <h2>Informações Básicas</h2>
+            <div class="info">
+                <label for="race">Raça:</label>
+                <input type="text" id="race" name="race">
+            </div>
+            <div class="info">
+                <label for="class">Classe:</label>
+                <input type="text" id="class" name="class">
+            </div>
+            <div class="info">
+                <label for="background">Background:</label>
+                <input type="text" id="background" name="background">
+            </div>
+            <div class="info">
+                <label for="hp">HP:</label>
+                <input type="number" id="hp" name="hp">
+            </div>
+            <div class="info">
+                <label for="speed">Deslocamento (m):</label>
+                <input type="text" id="speed" name="speed">
+            </div>
+            <div class="info">
+                <label for="armor-class">Classe de Armadura (CA):</label>
+                <input type="number" id="armor-class" name="armor-class">
+            </div>
+        </section>
+
+        <section class="attributes">
+            <h2>Atributos</h2>
+            <div class="attribute">
+                <label for="strength">Força:</label>
+                <input type="number" id="strength" name="strength">
+            </div>
+            <div class="attribute">
+                <label for="dexterity">Destreza:</label>
+                <input type="number" id="dexterity" name="dexterity">
+            </div>
+            <div class="attribute">
+                <label for="constitution">Constituição:</label>
+                <input type="number" id="constitution" name="constitution">
+            </div>
+            <div class="attribute">
+                <label for="intelligence">Inteligência:</label>
+                <input type="number" id="intelligence" name="intelligence">
+            </div>
+            <div class="attribute">
+                <label for="wisdom">Sabedoria:</label>
+                <input type="number" id="wisdom" name="wisdom">
+            </div>
+            <div class="attribute">
+                <label for="charisma">Carisma:</label>
+                <input type="number" id="charisma" name="charisma">
+            </div>
+        </section>
+
+        <section class="saves">
+            <h2>Salvaguardas</h2>
+            <div class="save">
+                <label for="save-strength">Força:</label>
+                <input type="number" id="save-strength" name="save-strength">
+            </div>
+            <div class="save">
+                <label for="save-dexterity">Destreza:</label>
+                <input type="number" id="save-dexterity" name="save-dexterity">
+            </div>
+            <div class="save">
+                <label for="save-constitution">Constituição:</label>
+                <input type="number" id="save-constitution" name="save-constitution">
+            </div>
+            <div class="save">
+                <label for="save-intelligence">Inteligência:</label>
+                <input type="number" id="save-intelligence" name="save-intelligence">
+            </div>
+            <div class="save">
+                <label for="save-wisdom">Sabedoria:</label>
+                <input type="number" id="save-wisdom" name="save-wisdom">
+            </div>
+            <div class="save">
+                <label for="save-charisma">Carisma:</label>
+                <input type="number" id="save-charisma" name="save-charisma">
+            </div>
+        </section>
+
+        <section class="skills">
+            <h2>Perícias</h2>
+            <div class="skill">
+                <label for="acrobatics">Acrobacia:</label>
+                <input type="number" id="acrobatics" name="acrobatics">
+            </div>
+            <div class="skill">
+                <label for="arcana">Arcanismo:</label>
+                <input type="number" id="arcana" name="arcana">
+            </div>
+            <div class="skill">
+                <label for="athletics">Atletismo:</label>
+                <input type="number" id="athletics" name="athletics">
+            </div>
+            <div class="skill">
+                <label for="deception">Enganação:</label>
+                <input type="number" id="deception" name="deception">
+            </div>
+            <div class="skill">
+                <label for="history">História:</label>
+                <input type="number" id="history" name="history">
+            </div>
+            <div class="skill">
+                <label for="intimidation">Intimidação:</label>
+                <input type="number" id="intimidation" name="intimidation">
+            </div>
+            <div class="skill">
+                <label for="investigation">Investigação:</label>
+                <input type="number" id="investigation" name="investigation">
+            </div>
+            <div class="skill">
+                <label for="medicine">Medicina:</label>
+                <input type="number" id="medicine" name="medicine">
+            </div>
+            <div class="skill">
+                <label for="nature">Natureza:</label>
+                <input type="number" id="nature" name="nature">
+            </div>
+            <div class="skill">
+                <label for="perception">Percepção:</label>
+                <input type="number" id="perception" name="perception">
+            </div>
+            <div class="skill">
+                <label for="persuasion">Persuasão:</label>
+                <input type="number" id="persuasion" name="persuasion">
+            </div>
+            <div class="skill">
+                <label for="sleight-of-hand">Prestidigitação:</label>
+                <input type="number" id="sleight-of-hand" name="sleight-of-hand">
+            </div>
+            <div class="skill">
+                <label for="religion">Religião:</label>
+                <input type="number" id="religion" name="religion">
+            </div>
+            <div class="skill">
+                <label for="survival">Sobrevivência:</label>
+                <input type="number" id="survival" name="survival">
+            </div>
+            <div class="skill">
+                <label for="stealth">Furtividade:</label>
+                <input type="number" id="stealth" name="stealth">
+            </div>
+            <div class="skill">
+                <label for="insight">Intuição:</label>
+                <input type="number" id="insight" name="insight">
+            </div>
+        </section>
+
+        <section class="equipment">
+            <h2>Equipamentos</h2>
+            <textarea id="equipment" name="equipment" rows="4" placeholder="Outros equipamentos"></textarea>
+        </section>
+
+        <section class="abilities">
+            <h2>Habilidades</h2>
+            <textarea id="abilities" name="abilities" rows="4" placeholder="Escreva as habilidades aqui"></textarea>
+        </section>
+
+        <section class="spells">
+            <h2>Magias</h2>
+            <textarea id="spells" name="spells" rows="4" placeholder="Escreva as magias aqui"></textarea>
+        </section>
+
+        <footer>
+            <button class="save-button" onclick="saveEdits()">Salvar Alterações</button>
+            <button class="restore-button" onclick="restoreOriginal()">Restaurar Padrões</button>
+        </footer>
+    </div>
+    
+    <script src="ficha.js"></script>
+</body>
+</html>
