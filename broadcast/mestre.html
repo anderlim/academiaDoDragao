@@ -18,7 +18,7 @@
 
 <!-- Header -->
 <header id="header">
-    <h1><a href="#" class="logo"><img src="images/drag.jpg" alt=""></a></h1>
+    <!-- <h1><a href="#" class="logo"><img src="images/drag.jpg" alt=""></a></h1> -->
     <a href="#menu">Menu</a>
 </header>
 
@@ -28,6 +28,9 @@
         <li><a href="index.html">Home</a></li>
         <li><a href="jogador.html">Guia para ser um jogador</a></li>
         <li><a href="mestre.html">Guia para ser um mestre</a></li>
+        <li><a href="http://localhost:3000/">Fórum</a></li>
+        <li><a href="quiz.html">Criação de ficha por um quiz</a></li>
+        <li><a href="manual.html">Criação de ficha manual</a></li>
     </ul>
 </nav>  
 
@@ -74,6 +77,48 @@
     </section>
 </div>
 
+<!-- Botão da Calculadora -->
+<button id="toggleCalculator" class="circular-button"><i class="fas fa-dice-d20"></i></button>
+
+<!-- Modal da Calculadora -->
+<div id="calculatorModal" class="modal calculator-container">
+    <div class="modal-content">
+        <span id="closeCalculator" class="close">&times;</span>
+        <div class="calculator">
+            <h2 class="h2-dicenator">Dicenator</h2>
+            <input type="text" class="display" placeholder="0" />
+            <div class="historic"></div> <!-- Adicionada result para exibir resultados e histórico -->
+            <div class="buttons">
+                <button class="btn btn-num">7</button>
+                <button class="btn btn-num">8</button>
+                <button class="btn btn-num">9</button>
+                <button class="btn btn-num">*</button>
+
+                <button class="btn btn-num">4</button>
+                <button class="btn btn-num">5</button>
+                <button class="btn btn-num">6</button>
+                <button class="btn btn-num">+</button>
+
+                <button class="btn btn-num">1</button>
+                <button class="btn btn-num">2</button>
+                <button class="btn btn-num">3</button>
+                <button class="btn btn-num">-</button>
+
+                <button class="btn btn-num">.</button>
+                <button class="btn btn-num">0</button>
+                <button class="btn btn-num">/</button>
+                <button class="btn btn-num">d</button>
+
+                <button class="btn btn-full btn-eq">
+                    <i class="fas fa-dice-d20"></i>
+                </button>
+                <button class="btn btn-full btn-hist">Mostrar Histórico</button>
+                <button class="btn btn-full btn-clear-hist">Limpar Histórico</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 <!-- Footer -->
 <!-- <footer id="footer">
     <div class="copyright">
@@ -96,6 +141,10 @@
 <script src="assets/js/skel.min.js"></script>
 <script src="assets/js/util.js"></script>
 <script src="assets/js/main.js"></script>
+<script src="assets/js/custom.js"></script>
+<script src="assets/js/calculadora.js"></script>
+<script src="assets/js/diceRoll.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/js/all.min.js"></script>
 
 </div></body>
 </html>

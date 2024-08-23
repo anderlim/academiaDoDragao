@@ -112,7 +112,6 @@ body {
 
 /* Estilos específicos da calculadora */
 .calculator .display {
-    width: 100%;
     font-size: 2em;
     padding: 10px;
     margin-bottom: 20px;
@@ -244,6 +243,9 @@ body {
     margin: 0;
 }
 
+.btn-num{
+    color:white;
+}
 /* Layout dos botões */
 .calculator .buttons {
     display: flex;

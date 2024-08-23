@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Criação Manual de Ficha</title>
+    <link rel="stylesheet" href="./assets/css/manual.css">
+    <link rel="stylesheet" href="./assets/css/style.css">
+</head>
+<body>
+    <!-- Barra de navegação -->
+    <div class="nav-bar">
+        <div class="menu-icon" onclick="toggleMenu()">&#9776; Menu</div>
+    </div>
+
+    <!-- Menu lateral -->
+    <div class="side-menu" id="sideMenu">
+        <a href="javascript:void(0)" class="close-btn" onclick="toggleMenu()">&times;</a>
+        <a href="index.html">Home</a>
+        <hr class="line">
+        <a href="jogador.html">Guia para ser um jogador</a>
+        <hr class="line">
+        <a href="mestre.html">Guia para ser um mestre</a>
+        <hr class="line">
+        <a href="http://localhost:3000/">Fórum</a>
+        <hr class="line">
+        <a href="quiz.html">Criação de ficha por um quiz</a>
+        <hr class="line">
+        <a href="manual.html">Criação de ficha manual</a>
+    </div>
+
+    <div class="main-content">
+        <div class="manual-container container">
+            <h1>Crie sua Ficha Manualmente</h1>
+    
+            <!-- Seção de Raça -->
+            <section class="manual-section">
+                <label for="race-select">Raça:</label>
+                <select id="race-select" onchange="updateRace()">
+                    <option value="">Selecione</option>
+                    <option value="humano">Humano</option>
+                    <option value="elfo">Elfo</option>
+                    <option value="anao">Anão</option>
+                    <!-- Adicione mais opções -->
+                </select>
+            </section>
+    
+            <!-- Seção de Classe -->
+            <section class="manual-section">
+                <label for="class-select">Classe:</label>
+                <select id="class-select" onchange="updateClass()">
+                    <option value="">Selecione</option>
+                    <option value="guerreiro">Guerreiro</option>
+                    <option value="Patrulheiro">Arqueiro</option>
+                    <option value="mago">Mago</option>
+                    <!-- Adicione mais opções -->
+                </select>
+            </section>
+    
+            <!-- Seção de Background -->
+            <section class="manual-section">
+                <label for="background-select">Background:</label>
+                <select id="background-select" onchange="updateBackground()">
+                    <option value="">Selecione</option>
+                    <option value="forasteiro">Forasteiro</option>
+                    <option value="nobre">Nobre</option>
+                    <option value="artesao">Artesão</option>
+                    <!-- Adicione mais opções -->
+                </select>
+            </section>
+    
+            <!-- Seção de Atributos -->
+            <section class="manual-section">
+                <h3>Atributos</h3>
+                <div class="attribute">
+                    <label for="strength">Força:</label>
+                    <input type="number" id="strength" name="strength" value="10" onchange="updateModifiers()">
+                </div>
+                <div class="attribute">
+                    <label for="dexterity">Destreza:</label>
+                    <input type="number" id="dexterity" name="dexterity" value="10" onchange="updateModifiers()">
+                </div>
+                <div class="attribute">
+                    <label for="constitution">Constituição:</label>
+                    <input type="number" id="constitution" name="constitution" value="10" onchange="updateModifiers()">
+                </div>
+                <div class="attribute">
+                    <label for="intelligence">Inteligência:</label>
+                    <input type="number" id="intelligence" name="intelligence" value="10" onchange="updateModifiers()">
+                </div>
+                <div class="attribute">
+                    <label for="wisdom">Sabedoria:</label>
+                    <input type="number" id="wisdom" name="wisdom" value="10" onchange="updateModifiers()">
+                </div>
+                <div class="attribute">
+                    <label for="charisma">Carisma:</label>
+                    <input type="number" id="charisma" name="charisma" value="10" onchange="updateModifiers()">
+                </div>
+            </section>
+    
+            <!-- Seção de Equipamentos -->
+            <section class="manual-section">
+                <label for="armor-select">Armadura:</label>
+                <select id="armor-select" name="armor-select" onchange="updateArmorClass()">
+                    <option value="none">Nenhuma</option>
+                    <option value="leather">Couro (CA 11 + Mod. Destreza)</option>
+                    <option value="chainmail">Malha (CA 16)</option>
+                    <option value="plate">Pesada (CA 18)</option>
+                </select>
+            </section>
+    
+            <section class="manual-section">
+                <label for="shield-select">Escudo:</label>
+                <select id="shield-select" name="shield-select" onchange="updateArmorClass()">
+                    <option value="no">Não</option>
+                    <option value="yes">Sim (CA +2)</option>
+                </select>
+            </section>
+    
+            <button class="save-button" onclick="saveManualCharacter()">Visualizar sua ficha</button>
+        </div>
+    </div>
+    
+    <!-- Botão da Calculadora -->
+<button id="toggleCalculator" class="circular-button"><i class="fas fa-dice-d20"></i></button>
+
+<!-- Modal da Calculadora -->
+<div id="calculatorModal" class="modal calculator-container">
+    <div class="modal-content">
+        <span id="closeCalculator" class="close">&times;</span>
+        <div class="calculator">
+            <h2 class="h2-dicenator">Dicenator</h2>
+            <input type="text" class="display" placeholder="0" />
+            <div class="historic"></div> <!-- Adicionada result para exibir resultados e histórico -->
+            <div class="buttons">
+                <button class="btn btn-num">7</button>
+                <button class="btn btn-num">8</button>
+                <button class="btn btn-num">9</button>
+                <button class="btn btn-num">*</button>
+
+                <button class="btn btn-num">4</button>
+                <button class="btn btn-num">5</button>
+                <button class="btn btn-num">6</button>
+                <button class="btn btn-num">+</button>
+
+                <button class="btn btn-num">1</button>
+                <button class="btn btn-num">2</button>
+                <button class="btn btn-num">3</button>
+                <button class="btn btn-num">-</button>
+
+                <button class="btn btn-num">.</button>
+                <button class="btn btn-num">0</button>
+                <button class="btn btn-num">/</button>
+                <button class="btn btn-num">d</button>
+
+                <button class="btn btn-full btn-eq">
+                    <i class="fas fa-dice-d20"></i>
+                </button>
+                <button class="btn btn-full btn-hist">Mostrar Histórico</button>
+                <button class="btn btn-full btn-clear-hist">Limpar Histórico</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <footer class="custom-footer">
+        Feito por: <span class="author"><a href="https://github.com/anderlim">Anderson Antunes</a></span> e <span class="author"><a href="https://github.com/bielprimo02">Luiz Gabriel</a></span>
+    </footer>
+
+    <script src="./assets/js/manual.js"></script>
+    <script src="./assets/js/custom.js"></script>
+    <script src="./assets/js/calculadora.js"></script>
+    <script src="./assets/js/diceRoll.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/js/all.min.js"></script>
+    </body>
+</html>

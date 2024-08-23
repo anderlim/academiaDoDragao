@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz de Criação de Ficha</title>
+    <link rel="stylesheet" href="./assets/css/quiz.css">
+    <link rel="stylesheet" href="./assets/css/style.css">
+</head>
+<body>
+     <!-- Barra de navegação -->
+     <div class="nav-bar">
+        <div class="menu-icon" onclick="toggleMenu()">&#9776; Menu</div>
+    </div>
+
+    <!-- Menu lateral -->
+    <div class="side-menu" id="sideMenu">
+        <a href="javascript:void(0)" class="close-btn" onclick="toggleMenu()">&times;</a>
+        <a href="index.html">Home</a>
+        <hr class="line">
+        <a href="jogador.html">Guia para ser um jogador</a>
+        <hr class="line">
+        <a href="mestre.html">Guia para ser um mestre</a>
+        <hr class="line">
+        <a href="http://localhost:3000/">Fórum</a>
+        <hr class="line">
+        <a href="quiz.html">Criação de ficha por um quiz</a>
+        <hr class="line">
+        <a href="manual.html">Criação de ficha manual</a>
+    </div>
+
+    <div class="main-content">
+        <div class="quiz-container container">
+            <h1>Crie seu Personagem</h1>
+            <div id="quiz-step-1" class="quiz-step">
+                <h2>Qual desses filmes você mais gosta?</h2>
+                <button onclick="chooseOption('lordOfTheRings')">Senhor dos Anéis</button>
+                <button onclick="chooseOption('harryPotter')">Harry Potter</button>
+                <button onclick="chooseOption('dungeonsAndDragons')">Dungeon and Dragons</button>
+            </div>
+            
+            <div id="quiz-step-2" class="quiz-step" style="display: none;">
+                <div id="race-options"></div>
+            </div>
+            
+            <div id="quiz-step-3" class="quiz-step" style="display: none;">
+                <div id="class-options"></div>
+            </div>
+            
+            <div id="quiz-step-4" class="quiz-step" style="display: none;">
+                <div id="character-options"></div>
+            </div>
+            
+            <div id="final-step" style="display: none;">
+                <h2>Seu personagem está pronto!</h2>
+                <button onclick="finalizeQuiz()">Visualizar sua ficha</button>
+            </div>        
+        </div>
+    </div>
+
+    <!-- Botão da Calculadora -->
+    <button id="toggleCalculator" class="circular-button"><i class="fas fa-dice-d20"></i></button>
+
+    <!-- Modal da Calculadora -->
+    <div id="calculatorModal" class="modal calculator-container">
+        <div class="modal-content">
+            <span id="closeCalculator" class="close">&times;</span>
+            <div class="calculator">
+                <h2 class="h2-dicenator">Dicenator</h2>
+                <input type="text" class="display" placeholder="0" />
+                <div class="historic"></div> <!-- Adicionada result para exibir resultados e histórico -->
+                <div class="buttons">
+                    <button class="btn btn-num">7</button>
+                    <button class="btn btn-num">8</button>
+                    <button class="btn btn-num">9</button>
+                    <button class="btn btn-num">*</button>
+
+                    <button class="btn btn-num">4</button>
+                    <button class="btn btn-num">5</button>
+                    <button class="btn btn-num">6</button>
+                    <button class="btn btn-num">+</button>
+
+                    <button class="btn btn-num">1</button>
+                    <button class="btn btn-num">2</button>
+                    <button class="btn btn-num">3</button>
+                    <button class="btn btn-num">-</button>
+
+                    <button class="btn btn-num">.</button>
+                    <button class="btn btn-num">0</button>
+                    <button class="btn btn-num">/</button>
+                    <button class="btn btn-num">d</button>
+
+                    <button class="btn btn-full btn-eq">
+                        <i class="fas fa-dice-d20"></i>
+                    </button>
+                    <button class="btn btn-full btn-hist">Mostrar Histórico</button>
+                    <button class="btn btn-full btn-clear-hist">Limpar Histórico</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="custom-footer">
+        Feito por: <span class="author"><a href="https://github.com/anderlim">Anderson Antunes</a></span> e <span class="author"><a href="https://github.com/bielprimo02">Luiz Gabriel</a></span>
+    </footer>
+    
+    <script src="./assets/js/quiz.js"></script>
+    <script src="./assets/js/custom.js"></script>
+    <script src="./assets/js/calculadora.js"></script>
+    <script src="./assets/js/diceRoll.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/js/all.min.js"></script>
+</body>
+</html>
