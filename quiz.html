@@ -15,18 +15,23 @@
             <button onclick="chooseOption('harryPotter')">Harry Potter</button>
             <button onclick="chooseOption('dungeonsAndDragons')">Dungeon and Dragons</button>
         </div>
+        
         <div id="quiz-step-2" class="quiz-step" style="display: none;">
-            <h2>Qual classe você mais gosta?</h2>
+            <div id="race-options"></div>
+        </div>
+        
+        <div id="quiz-step-3" class="quiz-step" style="display: none;">
             <div id="class-options"></div>
         </div>
-        <div id="quiz-step-3" class="quiz-step" style="display: none;">
-            <h2>Qual personagem você mais gosta?</h2>
+        
+        <div id="quiz-step-4" class="quiz-step" style="display: none;">
             <div id="character-options"></div>
         </div>
+        
         <div id="final-step" style="display: none;">
             <h2>Seu personagem está pronto!</h2>
             <button onclick="finalizeQuiz()">Visualizar sua ficha</button>
-        </div>
+        </div>        
     </div>
     
     <script src="quiz.js"></script>

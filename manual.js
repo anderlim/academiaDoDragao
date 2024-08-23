@@ -9,7 +9,8 @@ let characterData = {
     atributos: {},
     ca: 10,
     equipamentos: [],
-    armas: []
+    armas: [],
+    origin: 'manual'  // Indica que esses dados vieram da ficha manual
 };
 
 function updateRace() {
@@ -17,7 +18,7 @@ function updateRace() {
     if (selectedRace) {
         characterData.race = selectedRace;
         characterData.deslocamento = getRaceSpeed(selectedRace);
-        console.log(`Raça: ${characterData.race}, Deslocamento: ${characterData.deslocamento}`);
+        // console.log(`Raça: ${characterData.race}, Deslocamento: ${characterData.deslocamento}`);
     }
 }
 
@@ -28,7 +29,7 @@ function updateClass() {
         characterData.hp = getClassHP(selectedClass);
         characterData.salvaguardas = getClassSaves(selectedClass);
         characterData.pericias = getClassSkills(selectedClass);
-        console.log(`Classe: ${characterData.class}, HP: ${characterData.hp}`);
+        // console.log(`Classe: ${characterData.class}, HP: ${characterData.hp}`);
     }
 }
 
@@ -37,7 +38,7 @@ function updateBackground() {
     if (selectedBackground) {
         characterData.background = selectedBackground;
         characterData.pericias = { ...characterData.pericias, ...getBackgroundSkills(selectedBackground) };
-        console.log(`Background: ${characterData.background}`);
+        // console.log(`Background: ${characterData.background}`);
     }
 }
 
@@ -52,24 +53,32 @@ function updateModifiers() {
     };
 
     characterData.atributos = attributes;
-    console.log('Atributos e Modificadores:', characterData.atributos);
+    // console.log('Atributos e Modificadores:', characterData.atributos);
     updateArmorClass();  // Atualiza a CA com base nos novos valores de Destreza
 }
 
+// Função para calcular o modificador de destreza
+function calcularModificador(dest) {
+    return Math.floor((dest - 10) / 2);
+}
+
+// Função para atualizar a Classe de Armadura (CA)
 function updateArmorClass() {
     const armor = document.getElementById('armor-select').value;
     const shield = document.getElementById('shield-select').value;
+    const dexterityValue = parseInt(document.getElementById('dexterity').value);
+    const dexterityModifier = calcularModificador(dexterityValue);
     let ca = 10; // Base CA
 
     switch (armor) {
         case 'leather':
-            ca = 11 + parseInt(document.getElementById('dexterity').value);
+            ca = 11 + dexterityModifier;
             break;
         case 'chainmail':
-            ca = 16;
+            ca = 16; // Chainmail não permite adicionar o modificador de destreza
             break;
         case 'plate':
-            ca = 18;
+            ca = 18; // Plate não permite adicionar o modificador de destreza
             break;
     }
 
@@ -78,8 +87,9 @@ function updateArmorClass() {
     }
 
     characterData.ca = ca;
-    console.log('Classe de Armadura (CA):', characterData.ca);
+    // console.log('Classe de Armadura (CA):', characterData.ca);
 }
+
 
 function saveManualCharacter() {
     // Salvar os dados no localStorage para serem recuperados na página de ficha
