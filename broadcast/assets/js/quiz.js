@@ -177,20 +177,26 @@ function chooseOption(option) {
     const step1 = document.getElementById('quiz-step-1');
     const step2 = document.getElementById('quiz-step-2');
     const raceOptions = document.getElementById('race-options');
-    const classOptions = document.getElementById('class-options');
 
     step1.style.display = 'none';
-
-    // Armazena o universo escolhido
     quizCharacterData.universe = option;
 
-    if (option === 'lordOfTheRings') {
+    if (option === 'lordOfTheRings' || option === 'dungeonsAndDragons') {
         step2.style.display = 'block';
         raceOptions.innerHTML = `
-            <h2>Qual raça você prefere no Senhor dos Anéis?</h2>
-            <button onclick="chooseRace('Humano')">Humano</button>
-            <button onclick="chooseRace('Elfo')">Elfo</button>
-            <button onclick="chooseRace('Anão')">Anão</button>
+            <h2>Qual raça você prefere em ${option === 'lordOfTheRings' ? 'Senhor dos Anéis' : 'Dungeons & Dragons'}?</h2>
+            <div class="race-option">
+                <img src="./images/humano.png" alt="Humano">
+                <button onclick="chooseRace('Humano')">Humano</button>
+            </div>
+            <div class="race-option">
+                <img src="./images/elfo.png" alt="Elfo">
+                <button onclick="chooseRace('Elfo')">Elfo</button>
+            </div>
+            <div class="race-option">
+                <img src="./images/anao.png" alt="Anão">
+                <button onclick="chooseRace('Anão')">Anão</button>
+            </div>
         `;
     } else if (option === 'harryPotter') {
         quizCharacterData.race = 'Humano';
@@ -199,18 +205,22 @@ function chooseOption(option) {
         step2.style.display = 'block';
         raceOptions.innerHTML = `
             <h2>Qual casa você prefere em Harry Potter?</h2>
-            <button onclick="chooseHouse('Grifinória')">Grifinória</button>
-            <button onclick="chooseHouse('Sonserina')">Sonserina</button>
-            <button onclick="chooseHouse('Corvinal')">Corvinal</button>
-            <button onclick="chooseHouse('Lufa-Lufa')">Lufa-Lufa</button>
-        `;
-    } else if (option === 'dungeonsAndDragons') {
-        step2.style.display = 'block';
-        raceOptions.innerHTML = `
-            <h2>Qual raça você prefere em Dungeons & Dragons?</h2>
-            <button onclick="chooseRace('Humano')">Humano</button>
-            <button onclick="chooseRace('Elfo')">Elfo</button>
-            <button onclick="chooseRace('Anão')">Anão</button>
+            <div class="house-option">
+                <img src="./images/grifinoria.png" alt="Grifinória">
+                <button onclick="chooseHouse('Grifinória')">Grifinória</button>
+            </div>
+            <div class="house-option">
+                <img src="./images/sonserina.png" alt="Sonserina">
+                <button onclick="chooseHouse('Sonserina')">Sonserina</button>
+            </div>
+            <div class="house-option">
+                <img src="./images/corvinal.png" alt="Corvinal">
+                <button onclick="chooseHouse('Corvinal')">Corvinal</button>
+            </div>
+            <div class="house-option">
+                <img src="./images/lufa.png" alt="Lufa-Lufa">
+                <button onclick="chooseHouse('Lufa-Lufa')">Lufa-Lufa</button>
+            </div>
         `;
     }
 }
@@ -223,6 +233,7 @@ function chooseRace(selectedRace) {
     step2.style.display = 'none';
     quizCharacterData.race = selectedRace;
 
+    // Define o deslocamento baseado na raça escolhida
     switch (selectedRace) {
         case 'Humano':
             quizCharacterData.deslocamento = 9;
@@ -233,28 +244,26 @@ function chooseRace(selectedRace) {
         case 'Anão':
             quizCharacterData.deslocamento = 7.5;
             break;
-        case 'Tiefling':
-            quizCharacterData.deslocamento = 9;
-            break;
     }
 
     step3.style.display = 'block';
 
-    if (quizCharacterData.race === 'Humano' || quizCharacterData.race === 'Elfo' || quizCharacterData.race === 'Anão') {
-        classOptions.innerHTML = `
-            <h2>Qual classe você mais gosta?</h2>
+    // Exibir opções de classe com imagens
+    classOptions.innerHTML = `
+        <h2>Qual classe você mais gosta?</h2>
+        <div class="class-option">
+            <img src="./images/guerreiro.png" alt="Guerreiro">
             <button onclick="chooseClass('guerreiro')">Guerreiro</button>
-            <button onclick="chooseClass('Patrulheiro')">Arqueiro</button>
+        </div>
+        <div class="class-option">
+            <img src="./images/arqueiro.png" alt="Patrulheiro">
+            <button onclick="chooseClass('Patrulheiro')">Patrulheiro</button>
+        </div>
+        <div class="class-option">
+            <img src="./images/mago.png" alt="Mago">
             <button onclick="chooseClass('mago')">Mago</button>
-        `;
-    } else {
-        classOptions.innerHTML = `
-            <h2>Qual classe você mais gosta?</h2>
-            <button onclick="chooseClass('paladino')">Paladino</button>
-            <button onclick="chooseClass('ladino')">Ladino</button>
-            <button onclick="chooseClass('feiticeiro')">Feiticeiro</button>
-        `;
-    }
+        </div>
+    `;
 }
 
 function chooseHouse(selectedHouse) {

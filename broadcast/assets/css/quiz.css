@@ -164,3 +164,16 @@ a:hover {
     border: none;
     border-top: 0.5px solid #676d71;
 }
+
+.race-option, .class-option, .house-option {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.race-option img, .class-option img, .house-option img {
+    width: 8dvw; /* Ajuste conforme necessário */
+    height: auto;
+    margin-bottom: 10px;
+}
