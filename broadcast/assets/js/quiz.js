@@ -140,46 +140,6 @@ function getRaceSpeed(race) {
     return raceData[race] || 30;
 }
 
-function getClassHP(className) {
-    const classHP = {
-        guerreiro: 10,
-        arqueiro: 8,
-        mago: 6,
-        // Adicione mais classes conforme necessário
-    };
-    return classHP[className] || 8;
-}
-
-function getClassSaves(className) {
-    const classSaves = {
-        guerreiro: { strength: true, constitution: true },
-        arqueiro: { dexterity: true, intelligence: true },
-        mago: { intelligence: true, wisdom: true },
-        // Adicione mais classes conforme necessário
-    };
-    return classSaves[className] || {};
-}
-
-function getClassSkills(className) {
-    const classSkills = {
-        guerreiro: { atletismo: true, intimidacao: true },
-        arqueiro: { furtividade: true, percepcao: true },
-        mago: { arcana: true, historia: true },
-        // Adicione mais classes conforme necessário
-    };
-    return classSkills[className] || {};
-}
-
-function getBackgroundSkills(backgroundName) {
-    const backgroundSkills = {
-        forasteiro: { sobrevivencia: true, percepcao: true },
-        nobre: { persuasao: true, historia: true },
-        artesao: { prestidigitação: true, investigacao: true },
-        // Adicione mais backgrounds conforme necessário
-    };
-    return backgroundSkills[backgroundName] || {};
-}
-
 // Função para desabilitar os campos da ficha
 function disableFormFields() {
     const formFields = document.querySelectorAll('#character-form input, #character-form select, #character-form textarea');
@@ -306,19 +266,19 @@ function chooseHouse(selectedHouse) {
 
     switch (selectedHouse) {
         case 'Grifinória':
-            quizCharacterData.class = 'Feiticeiro';
+            quizCharacterData.class = 'feiticeiro';
             setQuizCharacterData('feiticeiro');
             break;
         case 'Sonserina':
-            quizCharacterData.class = 'Bruxo';
+            quizCharacterData.class = 'bruxo';
             setQuizCharacterData('bruxo');
             break;
         case 'Corvinal':
-            quizCharacterData.class = 'Mago';
+            quizCharacterData.class = 'mago';
             setQuizCharacterData('mago');
             break;
         case 'Lufa-Lufa':
-            quizCharacterData.class = 'Clérigo';
+            quizCharacterData.class = 'clerigo';
             setQuizCharacterData('clerigo');
             break;
     }

@@ -1,6 +1,6 @@
 body {
     font-family: Arial, sans-serif;
-    background-color: #062038;
+    background-color: #062038 !important;
     display: flex;
     flex-direction: column;
     justify-content: space-between;

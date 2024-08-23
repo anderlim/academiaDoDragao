@@ -122,8 +122,13 @@ function getClassHP(className) {
 function getClassSaves(className) {
     const classSaves = {
         guerreiro: { strength: true, constitution: true },
-        arqueiro: { dexterity: true, intelligence: true },
+        Patrulheiro: { dexterity: true, intelligence: true },
         mago: { intelligence: true, wisdom: true },
+        paladino: { strength: true, charisma: true },
+        ladino: { dexterity: true, intelligence: true },
+        feiticeiro: { constitution: true, charisma: true },
+        clerigo: { wisdom: true, charisma: true },
+        bruxo: { wisdom: true, charisma: true },
         // Adicione mais classes conforme necessário
     };
     return classSaves[className] || {};
@@ -131,9 +136,14 @@ function getClassSaves(className) {
 
 function getClassSkills(className) {
     const classSkills = {
-        guerreiro: { atletismo: true, intimidacao: true },
-        arqueiro: { furtividade: true, percepcao: true },
-        mago: { arcana: true, historia: true },
+        guerreiro: { athletics: true, intimidation: true },
+        Patrulheiro: { stealth: true, perception: true },
+        mago: { arcana: true, history: true },
+        paladino: { persuasion: true, religion: true },
+        ladino: { stealth: true, 'sleight-of-hand': true },
+        feiticeiro: { arcana: true, persuasion: true },
+        clerigo: { medicine: true, persuasion: true },
+        bruxo: { arcana: true, deception: true },
         // Adicione mais classes conforme necessário
     };
     return classSkills[className] || {};
@@ -141,9 +151,13 @@ function getClassSkills(className) {
 
 function getBackgroundSkills(backgroundName) {
     const backgroundSkills = {
-        forasteiro: { sobrevivencia: true, percepcao: true },
-        nobre: { persuasao: true, historia: true },
-        artesao: { prestidigitação: true, investigacao: true },
+        forasteiro: { survival: true, perception: true },
+        nobre: { persuasion: true, history: true },
+        artesao: { 'sleight-of-hand': true, investigation: true },
+        heroiDoPovo: { athletics: true, survival: true },
+        sabio: { arcana: true, history: true },
+        soldado: { athletics: true, intimidation: true },
+        artista: { acrobatics: true, performance: true },
         // Adicione mais backgrounds conforme necessário
     };
     return backgroundSkills[backgroundName] || {};

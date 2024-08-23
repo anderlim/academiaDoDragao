@@ -165,7 +165,7 @@ function saveEdits() {
             survival: parseInt(document.getElementById('survival').value),
             stealth: parseInt(document.getElementById('stealth').value),
             insight: parseInt(document.getElementById('insight').value),
-        },
+        },        
         magias: document.getElementById('spells').value.split(',').map(magia => magia.trim()),
         equipamentos: document.getElementById('equipment').value.split(',').map(item => item.trim()),
         habilidades: document.getElementById('abilities').value.split(',').map(habilidade => habilidade.trim()),
@@ -193,7 +193,7 @@ function saveEdits() {
             survival: document.getElementById('survival-checkbox').checked,
             stealth: document.getElementById('stealth-checkbox').checked,
             insight: document.getElementById('insight-checkbox').checked,
-        }
+        }        
     };
 
     // Salvar no localStorage
@@ -293,7 +293,7 @@ document.addEventListener('DOMContentLoaded', function() {
 function getClassSaves(className) {
     const classSaves = {
         guerreiro: { strength: true, constitution: true },
-        arqueiro: { dexterity: true, intelligence: true },
+        Patrulheiro: { dexterity: true, intelligence: true },
         mago: { intelligence: true, wisdom: true },
         paladino: { strength: true, charisma: true },
         ladino: { dexterity: true, intelligence: true },
@@ -308,10 +308,10 @@ function getClassSaves(className) {
 function getClassSkills(className) {
     const classSkills = {
         guerreiro: { athletics: true, intimidation: true },
-        arqueiro: { stealth: true, perception: true },
+        Patrulheiro: { stealth: true, perception: true },
         mago: { arcana: true, history: true },
         paladino: { persuasion: true, religion: true },
-        ladino: { stealth: true, sleightOfHand: true },
+        ladino: { stealth: true, 'sleight-of-hand': true }, // Aqui foi ajustado
         feiticeiro: { arcana: true, persuasion: true },
         clerigo: { medicine: true, persuasion: true },
         bruxo: { arcana: true, deception: true },
@@ -324,7 +324,7 @@ function getBackgroundSkills(backgroundName) {
     const backgroundSkills = {
         forasteiro: { survival: true, perception: true },
         nobre: { persuasion: true, history: true },
-        artesao: { sleightOfHand: true, investigation: true },
+        artesao: { 'sleight-of-hand': true, investigation: true }, // Aqui foi ajustado
         heroiDoPovo: { athletics: true, survival: true },
         sabio: { arcana: true, history: true },
         soldado: { athletics: true, intimidation: true },
@@ -354,8 +354,11 @@ function markSavesCheckboxes(saves) {
 
 function markSkillsCheckboxes(skills) {
     for (let skill in skills) {
-        if (skills[skill]) {
-            document.getElementById(`${skill}-checkbox`).checked = true;
+        const checkbox = document.getElementById(`${skill}-checkbox`);
+        if (checkbox) {
+            checkbox.checked = true;
+        } else {
+            console.warn(`Checkbox para habilidade ${skill} não encontrada.`);
         }
     }
 }

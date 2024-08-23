@@ -1,6 +1,6 @@
 body {
     font-family: Arial, sans-serif;
-    background-color: #062038;
+    background-color: #062038 !important;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -36,7 +36,7 @@ select {
     border: 1px solid #ccc;
 }
 
-button {
+.save-button {
     padding: 10px 20px;
     border: none;
     background-color: #1F7D57;
@@ -45,7 +45,7 @@ button {
     cursor: pointer;
 }
 
-button:hover {
+.save-button:hover {
     background-color: #003E25;
 }
 
@@ -158,12 +158,12 @@ a:hover {
     font-size: 0.9em;
     font-family: Arial, sans-serif;
     position: relative;
-    margin-top: auto; /* Empurra o footer para o final */
+    margin-top: auto;
 }
 
 .author {
     font-weight: bold;
-    margin: 0 5px; /* Espaço entre os nomes dos autores */
+    margin: 0 5px;
 }
 
 .line{
