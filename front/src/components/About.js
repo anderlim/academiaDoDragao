@@ -13,11 +13,11 @@ const About = () => {
                       Forum App da Academia do Dragão
                     </span>
                   </h1>
-                  <p class="max-w-2xl mb-6 font-light text-gray-500 lg:mb-8 md:text-lg lg:text-xl dark:text-gray-400">
+                  {/* <p class="max-w-2xl mb-6 font-light text-gray-500 lg:mb-8 md:text-lg lg:text-xl dark:text-gray-400">
                     Purpose-built for the 21st century, with user experience in
                     mind.
-                  </p>
-                  <a
+                  </p> */}
+                  {/* <a
                     href="/posts"
                     class="inline-flex items-center justify-center px-5 py-3 mr-3 text-base font-medium text-center text-white rounded-lg bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 dark:focus:ring-primary-900"
                   >
@@ -34,7 +34,7 @@ const About = () => {
                         clip-rule="evenodd"
                       ></path>
                     </svg>
-                  </a>
+                  </a> */}
                 </div>
               </div>
             </section>
@@ -42,19 +42,16 @@ const About = () => {
               <div class="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6">
                 <div class="max-w-screen-lg text-gray-500 sm:text-lg dark:text-gray-400">
                   <h2 class="mb-4 text-4xl tracking-tight font-bold text-gray-900 dark:text-white">
-                    About this Website
+                    Sobre este fórum
                   </h2>
                   <p class="mb-4 font-light">
-                    Hi! I'm Arul and I made this site in December 2022, as part
-                    of my project for a full stack development course - Full
-                    Stack Open 2022. This is actually my first foray in
-                    JavaScript based full-stack development. Through building
-                    this website, I have learnt several things, from using
-                    Tailwind CSS to build a proper user experience to developing
-                    proper REST APIs using MongoDB, Express and Mongoose.
+                  O site oferece uma plataforma completa para jogadores e mestres de RPG, especialmente aqueles focados no sistema D20 e na 5ª edição de Dungeons & Dragons. Entre suas principais funcionalidades, o site conta com uma seção dedicada à criação de fichas de personagens, que pode ser realizada tanto de forma manual quanto através de um quiz interativo. Essa última opção é especialmente útil para iniciantes, pois guia os usuários passo a passo na construção de seus personagens, utilizando referências de filmes populares para facilitar o processo.
+                  </p>
+                  <p class="mb-4 font-light">
+                  Outro ponto de destaque é o fórum do site, que serve como um espaço de socialização entre os usuários. No fórum, jogadores e mestres podem compartilhar suas experiências, tirar dúvidas, e colaborar na criação de campanhas e narrativas. Essa função é essencial para fomentar a comunidade, promovendo o aprendizado e a troca de ideias. A interação constante entre os usuários permite que tanto novatos quanto veteranos no RPG se beneficiem do conhecimento coletivo, tornando o fórum uma peça central na proposta do site de unir e educar a comunidade de jogadores.
                   </p>
 
-                  <a
+                  {/* <a
                     href="https://github.com/xxdydx/forum-app"
                     target="_blank"
                     class="inline-flex items-center font-medium text-primary-600 hover:text-primary-800 dark:text-primary-500 dark:hover:text-primary-700"
@@ -80,7 +77,7 @@ const About = () => {
                         clip-rule="evenodd"
                       ></path>
                     </svg>
-                  </a>
+                  </a> */}
                 </div>
               </div>
             </section>
@@ -88,7 +85,7 @@ const About = () => {
               <div class="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6">
                 <div class="max-w-screen-lg text-gray-500 sm:text-lg dark:text-gray-400">
                   <h2 class="mb-4 text-4xl tracking-tight font-bold text-gray-900 dark:text-white">
-                    Technologies Used
+                    Tecnologias Utilizadas
                   </h2>
                   <div className="">
                     <img
