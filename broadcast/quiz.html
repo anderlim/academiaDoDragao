@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz de Criação de Ficha</title>
+    <link rel="stylesheet" href="./assets/css/quiz.css">
+</head>
+<body>
+     <!-- Barra de navegação -->
+     <div class="nav-bar">
+        <div class="menu-icon" onclick="toggleMenu()">&#9776; Menu</div>
+    </div>
+
+    <!-- Menu lateral -->
+    <div class="side-menu" id="sideMenu">
+        <a href="javascript:void(0)" class="close-btn" onclick="toggleMenu()">&times;</a>
+        <a href="index.html">Home</a>
+        <hr class="line">
+        <a href="jogador.html">Guia para ser um jogador</a>
+        <hr class="line">
+        <a href="mestre.html">Guia para ser um mestre</a>
+        <hr class="line">
+        <a href="http://localhost:3000/">Fórum</a>
+    </div>
+
+    <div class="main-content">
+        <div class="quiz-container container">
+            <h1>Crie seu Personagem</h1>
+            <div id="quiz-step-1" class="quiz-step">
+                <h2>Qual desses filmes você mais gosta?</h2>
+                <button onclick="chooseOption('lordOfTheRings')">Senhor dos Anéis</button>
+                <button onclick="chooseOption('harryPotter')">Harry Potter</button>
+                <button onclick="chooseOption('dungeonsAndDragons')">Dungeon and Dragons</button>
+            </div>
+            
+            <div id="quiz-step-2" class="quiz-step" style="display: none;">
+                <div id="race-options"></div>
+            </div>
+            
+            <div id="quiz-step-3" class="quiz-step" style="display: none;">
+                <div id="class-options"></div>
+            </div>
+            
+            <div id="quiz-step-4" class="quiz-step" style="display: none;">
+                <div id="character-options"></div>
+            </div>
+            
+            <div id="final-step" style="display: none;">
+                <h2>Seu personagem está pronto!</h2>
+                <button onclick="finalizeQuiz()">Visualizar sua ficha</button>
+            </div>        
+        </div>
+    </div>
+
+    
+
+    <footer class="custom-footer">
+        Feito por: <span class="author"><a href="https://github.com/anderlim">Anderson Antunes</a></span> e <span class="author"><a href="https://github.com/bielprimo02">Luiz Gabriel</a></span>
+    </footer>
+    
+    <script src="./assets/js/quiz.js"></script>
+</body>
+</html>

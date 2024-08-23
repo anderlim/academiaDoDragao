@@ -1,0 +1,173 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #062038;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100vh;
+    margin: 0;
+    overflow-x: hidden;
+}
+
+.manual-container {
+    background-color: #7095B8;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    max-width: 500px;
+    width: 100%;
+    text-align: center;
+}
+
+.manual-section {
+    margin-bottom: 15px;
+}
+
+label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 5px;
+}
+
+select {
+    width: 100%;
+    padding: 10px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+}
+
+button {
+    padding: 10px 20px;
+    border: none;
+    background-color: #1F7D57;
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #003E25;
+}
+
+.main-content {
+    flex: 1; /* Permite que o conteúdo principal cresça para ocupar o espaço */
+    display: flex;
+    justify-content: center;
+    align-items: center; /* Centraliza o conteúdo verticalmente */
+    flex-direction: column;
+    text-align: center;
+}
+
+.quiz-container {
+    background-color: #7095B8;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    max-width: 500px;
+    width: 100%;
+}
+
+.custom-footer {
+    background-color: black;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    width: 100%;
+    font-size: 0.9em;
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    margin-top: auto; /* Empurra o footer para o final */
+}
+
+.author {
+    font-weight: bold;
+    margin: 0 5px; /* Espaço entre os nomes dos autores */
+}
+
+a {
+    color: white;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #676d71;
+}
+
+.nav-bar {
+    width: 100%;
+    background-color: #0A1A2A; /* Cor de fundo para a barra de navegação */
+    padding: 2dvh;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Sombra para separar a barra do conteúdo */
+}
+
+.menu-icon {
+    margin-right: 1.5dvw;
+    cursor: pointer;
+    color: white;
+    float: right; /* Alinha o ícone do menu à direita */
+}
+
+.side-menu {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    top: 0;
+    right: 0;
+    background-color: #0A1A2A; /* Cor sólida do menu */
+    overflow-x: hidden;
+    transition: 0.3s;
+    padding-top: 60px;
+    z-index: 3; /* Garante que o menu fique acima do conteúdo */
+}
+
+.side-menu a {
+    padding: 10px 15px;
+    text-decoration: none;
+    font-size: 18px;
+    color: white;
+    display: block;
+    transition: 0.3s;
+}
+
+.side-menu a:hover {
+    color: #676d71; /* Cor ao passar o mouse */
+}
+
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    font-size: 36px;
+    cursor: pointer;
+}
+
+.main-content {
+    padding: 20px; /* Para evitar que o conteúdo toque nas bordas */
+    transition: background-color 0.3s;
+}
+
+.custom-footer {
+    background-color: black;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    width: 100%;
+    font-size: 0.9em;
+    font-family: Arial, sans-serif;
+    position: relative;
+    margin-top: auto; /* Empurra o footer para o final */
+}
+
+.author {
+    font-weight: bold;
+    margin: 0 5px; /* Espaço entre os nomes dos autores */
+}
+
+.line{
+    width: 90%;
+    border: none;
+    border-top: 0.5px solid #676d71; 
+}
