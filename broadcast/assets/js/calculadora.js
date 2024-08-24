@@ -1,5 +1,5 @@
 function Calculadora() {
-    this.display = document.querySelector('.display');
+    this.display = document.querySelector('.display'||'.display1');
     const historicDiv = document.querySelector('.historic');
     const toggleHistoryButton = document.querySelector('.btn-hist');
     const clearHistoryButton = document.querySelector('.btn-clear-hist');
