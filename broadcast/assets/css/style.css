@@ -224,13 +224,13 @@ body {
 }
 
 .calculator .btn-hist, .calculator .btn-clear-hist {
-    background-color: #66cc66;
+    background-color: #1F7D57;
     color: white;
     font-weight: bold;
 }
 
 .calculator .btn-hist:hover, .calculator .btn-clear-hist:hover {
-    background-color: #5cb85c;
+    background-color: #003E25;
 }
 
 .calculator .historic {
