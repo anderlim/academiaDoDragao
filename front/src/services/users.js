@@ -1,5 +1,5 @@
 import axios from "axios";
-const baseUrl = "http://academia-dragao.online/api/users";
+const baseUrl = "https://academia-dragao.online/api/users";
 
 const getAll = async () => {
   const response = await axios.get(baseUrl);

@@ -1,5 +1,5 @@
 import axios from "axios";
-const baseUrl = "http://academia-dragao.online/api/blogs";
+const baseUrl = "https://academia-dragao.online/api/blogs";
 
 let token = null;
 
