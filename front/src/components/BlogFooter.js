@@ -13,22 +13,22 @@ const BlogFooter = () => {
         <ul className="flex flex-wrap items-center mt-3 text-sm text-gray-500 dark:text-gray-400 sm:mt-0">
           <li>
             <a href="/" className="mr-4 hover:underline md:mr-6 ">
-              About
+              Sobre
             </a>
           </li>
           <li>
             <a href="#" className="mr-4 hover:underline md:mr-6">
-              Privacy Policy
+              Politica de privacidade
             </a>
           </li>
           <li>
             <a href="#" className="mr-4 hover:underline md:mr-6">
-              Licensing
+              Licensa
             </a>
           </li>
           <li>
             <a href="#" className="hover:underline">
-              Contact
+              Contato
             </a>
           </li>
         </ul>
