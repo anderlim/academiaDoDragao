@@ -107,7 +107,7 @@ const BlogView = ({ blog }) => {
                   <div>
                     <a
                       href={
-                        `/users/${blog.user.username}` ||
+                        `/users/${blog?.user?.username}` ||
                         `/users/${user1.username}`
                       }
                       rel="author"

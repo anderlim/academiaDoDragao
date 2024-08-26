@@ -187,14 +187,17 @@ function chooseOption(option) {
             <h2>Qual raça você prefere em ${option === 'lordOfTheRings' ? 'Senhor dos Anéis' : 'Dungeons & Dragons'}?</h2>
             <div class="race-option">
                 <img src="./images/humano.png" alt="Humano">
+                <p>Humanos são versáteis e adaptáveis, conhecidos por sua ambição e inovação. Escolher essa raça da bônus de +1 em todos os atributos e o deslocamento 9 metros.</p>
                 <button onclick="chooseRace('Humano')">Humano</button>
             </div>
             <div class="race-option">
                 <img src="./images/elfo.png" alt="Elfo">
+                <p>Elfos são graciosos e ágeis, com uma longa vida e afinidade com a natureza e magia. Escolher essa raça da bônus de +2 Destreza, +1 Inteligência e o Deslocamento 9 metros.</p>
                 <button onclick="chooseRace('Elfo')">Elfo</button>
             </div>
             <div class="race-option">
                 <img src="./images/anao.png" alt="Anão">
+                <p>Anões são robustos e resistentes, conhecidos por sua habilidade em combate e artesanato. Escolher essa raça da bônus de +2 Constituição, +2 Força e o Deslocamento 9 metros.</p>
                 <button onclick="chooseRace('Anão')">Anão</button>
             </div>
         `;
@@ -207,18 +210,22 @@ function chooseOption(option) {
             <h2>Qual casa você prefere em Harry Potter?</h2>
             <div class="house-option">
                 <img src="./images/grifinoria.png" alt="Grifinória">
+                <p>Ao escolher essa casa você sera um humano que são versáteis e adaptáveis, conhecidos por sua ambição e inovação.Escolher essa raça da bônus de +1 em todos os atributos e o deslocamento 9 metros e sua classe será feiticeiro que conjura magias de forma natural, com poder inato. Suas habilidades mágicas vêm de uma conexão sanguínea ou evento sobrenatural. Ele da como bônus Fonte de Magia e Truques</p>
                 <button onclick="chooseHouse('Grifinória')">Grifinória</button>
             </div>
             <div class="house-option">
                 <img src="./images/sonserina.png" alt="Sonserina">
+                <p>Ao escolher essa casa você sera um humanos que são versáteis e adaptáveis, conhecidos por sua ambição e inovação.Escolher essa raça da bônus de +1 em todos os atributos e o deslocamento 9 metros e sua classe será bruxo, fez um pacto com uma entidade poderosa para obter habilidades mágicas. Conjura magias através de sua relação com seu patrono sobrenatural. Ele da como bônus Pacto das Trevas e Lâmina Pactual.</p>
                 <button onclick="chooseHouse('Sonserina')">Sonserina</button>
             </div>
             <div class="house-option">
                 <img src="./images/corvinal.png" alt="Corvinal">
+                <p>Ao escolher essa casa você sera um humanos que são versáteis e adaptáveis, conhecidos por sua ambição e inovação.Escolher essa raça da bônus de +1 em todos os atributos e o deslocamento 9 metros. Mago um estudioso da magia, usa seu conhecimento e aprendizado para lançar uma ampla gama de feitiços. Depende de livros de magias e preparação. Ele da como bônus Magia de 1º Nível e Recuperação Arcana.</p>
                 <button onclick="chooseHouse('Corvinal')">Corvinal</button>
             </div>
             <div class="house-option">
                 <img src="./images/lufa.png" alt="Lufa-Lufa">
+                <p>Ao escolher essa casa você sera um humanos que são versáteis e adaptáveis, conhecidos por sua ambição e inovação.Escolher essa raça da bônus de +1 em todos os atributos e o deslocamento 9 metros. Clérigo um devoto de uma divindade, canaliza poder divino para curar, proteger e combater o mal. Suas magias são obtidas através da fé e devoção religiosa. Ele da como bônus Domínio da Vida e Lançamento de Magia.</p>
                 <button onclick="chooseHouse('Lufa-Lufa')">Lufa-Lufa</button>
             </div>
         `;
@@ -237,12 +244,15 @@ function chooseRace(selectedRace) {
     switch (selectedRace) {
         case 'Humano':
             quizCharacterData.deslocamento = 9;
+            applyRaceBonus('Humano');
             break;
         case 'Elfo':
-            quizCharacterData.deslocamento = 10.5;
+            quizCharacterData.deslocamento = 9;
+            applyRaceBonus('Elfo');
             break;
         case 'Anão':
-            quizCharacterData.deslocamento = 7.5;
+            quizCharacterData.deslocamento = 9;
+            applyRaceBonus('Anão');
             break;
     }
 
@@ -253,14 +263,17 @@ function chooseRace(selectedRace) {
         <h2>Qual classe você mais gosta?</h2>
         <div class="class-option">
             <img src="./images/guerreiro.png" alt="Guerreiro">
+            <p>Guerreiros são mestres em combate corpo-a-corpo, com habilidades de defesa excepcionais. Ele da como bônus +1 CA e Ataque Extra.</p>
             <button onclick="chooseClass('guerreiro')">Guerreiro</button>
         </div>
         <div class="class-option">
             <img src="./images/arqueiro.png" alt="Patrulheiro">
+            <p>Patrulheiros são especialistas em combate à distância e sobrevivência na natureza. Ele da como bônus Estilo de Combate (Arqueiro) e Flecha Rápida.</p>
             <button onclick="chooseClass('Patrulheiro')">Patrulheiro</button>
         </div>
         <div class="class-option">
             <img src="./images/mago.png" alt="Mago">
+            <p>Magos são estudiosos da magia, capazes de conjurar feitiços poderosos e versáteis. Ele da como bônus Magia de 1º Nível e Recuperação Arcana.</p>
             <button onclick="chooseClass('mago')">Mago</button>
         </div>
     `;
@@ -276,18 +289,22 @@ function chooseHouse(selectedHouse) {
     switch (selectedHouse) {
         case 'Grifinória':
             quizCharacterData.class = 'feiticeiro';
+            applyRaceBonus('Humano'); // A raça é sempre Humano nas casas de Harry Potter
             setQuizCharacterData('feiticeiro');
             break;
         case 'Sonserina':
             quizCharacterData.class = 'bruxo';
+            applyRaceBonus('Humano');
             setQuizCharacterData('bruxo');
             break;
         case 'Corvinal':
             quizCharacterData.class = 'mago';
+            applyRaceBonus('Humano');
             setQuizCharacterData('mago');
             break;
         case 'Lufa-Lufa':
             quizCharacterData.class = 'clerigo';
+            applyRaceBonus('Humano');
             setQuizCharacterData('clerigo');
             break;
     }
@@ -443,41 +460,51 @@ function chooseCharacter(character) {
 }
 
 function setQuizCharacterData(selectedClass) {
+    // Primeiro, definir os valores padrão dos atributos da classe
+    const baseAttributes = {
+        strength: 0,
+        dexterity: 0,
+        constitution: 0,
+        intelligence: 0,
+        wisdom: 0,
+        charisma: 0
+    };
+
     switch (selectedClass) {
         case 'guerreiro':
+            baseAttributes.strength = 15;
+            baseAttributes.constitution = 14;
+            baseAttributes.dexterity = 13;
+            baseAttributes.intelligence = 10;
+            baseAttributes.wisdom = 12;
+            baseAttributes.charisma = 8;
             quizCharacterData.hp = 12;
-            quizCharacterData.atributos.strength = 15;
-            quizCharacterData.atributos.constitution = 14;
-            quizCharacterData.atributos.dexterity = 13;
-            quizCharacterData.atributos.intelligence = 10;
-            quizCharacterData.atributos.wisdom = 12;
-            quizCharacterData.atributos.charisma = 8;
             quizCharacterData.equipamentos = ['Espada longa', 'Armadura de malha', 'Escudo'];
             quizCharacterData.habilidades = ['Ataque extra', 'Estilo de combate(defesa +1 CA)'];
             quizCharacterData.proficiencias = 'Armaduras: Todas, Armas: Simples e Marciais';
             quizCharacterData.ca = 18;
             break;
         case 'Patrulheiro':
+            baseAttributes.strength = 13;
+            baseAttributes.constitution = 12;
+            baseAttributes.dexterity = 15;
+            baseAttributes.intelligence = 8;
+            baseAttributes.wisdom = 14;
+            baseAttributes.charisma = 10;
             quizCharacterData.hp = 11;
-            quizCharacterData.atributos.strength = 13;
-            quizCharacterData.atributos.constitution = 12;
-            quizCharacterData.atributos.dexterity = 15;
-            quizCharacterData.atributos.intelligence = 8;
-            quizCharacterData.atributos.wisdom = 14;
-            quizCharacterData.atributos.charisma = 10;
             quizCharacterData.equipamentos = ['Arco longo', 'Aljava com flechas', 'Meia armadura'];
             quizCharacterData.habilidades = ['Estilo de combate (Arqueiro)', 'Flecha rápida'];
             quizCharacterData.proficiencias = 'Armaduras: Leves, Armas: Simples e Marciais';
             quizCharacterData.ca = 13;
             break;
         case 'mago':
+            baseAttributes.strength = 8;
+            baseAttributes.constitution = 10;
+            baseAttributes.dexterity = 12;
+            baseAttributes.intelligence = 15;
+            baseAttributes.wisdom = 13;
+            baseAttributes.charisma = 14;
             quizCharacterData.hp = 6;
-            quizCharacterData.atributos.strength = 8;
-            quizCharacterData.atributos.constitution = 10;
-            quizCharacterData.atributos.dexterity = 12;
-            quizCharacterData.atributos.intelligence = 15;
-            quizCharacterData.atributos.wisdom = 13;
-            quizCharacterData.atributos.charisma = 14;
             quizCharacterData.equipamentos = ['Cajado', 'Livro de magias', 'Roupas de mago'];
             quizCharacterData.magias = ['Mísseis Mágicos', 'Escudo Arcano', 'Mãos Mágicas'];
             quizCharacterData.habilidades = ['Recuperação Arcana', 'Magia de 1º Nível'];
@@ -485,39 +512,39 @@ function setQuizCharacterData(selectedClass) {
             quizCharacterData.ca = 10;
             break;
         case 'paladino':
+            baseAttributes.strength = 15;
+            baseAttributes.constitution = 13;
+            baseAttributes.dexterity = 8;
+            baseAttributes.intelligence = 10;
+            baseAttributes.wisdom = 12;
+            baseAttributes.charisma = 14;
             quizCharacterData.hp = 11;
-            quizCharacterData.atributos.strength = 15;
-            quizCharacterData.atributos.constitution = 13;
-            quizCharacterData.atributos.dexterity = 8;
-            quizCharacterData.atributos.intelligence = 10;
-            quizCharacterData.atributos.wisdom = 12;
-            quizCharacterData.atributos.charisma = 14;
             quizCharacterData.equipamentos = ['Espada longa', 'Armadura completa', 'Escudo','símbolo sagrado'];
             quizCharacterData.habilidades = ['Sentido Divino', 'Imposição das Mãos'];
             quizCharacterData.proficiencias = 'Armaduras: Todas, Armas: Simples e Marciais';
             quizCharacterData.ca = 21;
             break;
         case 'ladino':
+            baseAttributes.strength = 8;
+            baseAttributes.constitution = 12;
+            baseAttributes.dexterity = 15;
+            baseAttributes.intelligence = 14;
+            baseAttributes.wisdom = 10;
+            baseAttributes.charisma = 13;
             quizCharacterData.hp = 9;
-            quizCharacterData.atributos.strength = 8;
-            quizCharacterData.atributos.constitution = 12;
-            quizCharacterData.atributos.dexterity = 15;
-            quizCharacterData.atributos.intelligence = 14;
-            quizCharacterData.atributos.wisdom = 10;
-            quizCharacterData.atributos.charisma = 13;
             quizCharacterData.equipamentos = ['Adaga', 'Armadura de couro', 'Ferramentas de ladrão'];
             quizCharacterData.habilidades = ['Ataque Furtivo', 'Ação Ardilosa'];
             quizCharacterData.proficiencias = 'Armaduras: Leves, Armas: Simples e Armas de Fogo';
             quizCharacterData.ca = 11;
             break;
         case 'feiticeiro':
+            baseAttributes.strength = 8;
+            baseAttributes.constitution = 12;
+            baseAttributes.dexterity = 14;
+            baseAttributes.intelligence = 13;
+            baseAttributes.wisdom = 10;
+            baseAttributes.charisma = 15;
             quizCharacterData.hp = 7;
-            quizCharacterData.atributos.strength = 8;
-            quizCharacterData.atributos.constitution = 12;
-            quizCharacterData.atributos.dexterity = 14;
-            quizCharacterData.atributos.intelligence = 13;
-            quizCharacterData.atributos.wisdom = 10;
-            quizCharacterData.atributos.charisma = 15;
             quizCharacterData.equipamentos = ['Varinha mágica', 'Roupas de feiticeiro', 'Bolsa de componentes'];
             quizCharacterData.magias = ['Raio de Gelo', 'Mãos Flamejantes', 'Leque das Sombras'];
             quizCharacterData.habilidades = ['Fonte de Magia', 'Truques'];
@@ -525,13 +552,13 @@ function setQuizCharacterData(selectedClass) {
             quizCharacterData.ca = 10;
             break;
         case 'clerigo':
+            baseAttributes.strength = 13;
+            baseAttributes.constitution = 14;
+            baseAttributes.dexterity = 8;
+            baseAttributes.intelligence = 10;
+            baseAttributes.wisdom = 15;
+            baseAttributes.charisma = 12;
             quizCharacterData.hp = 10;
-            quizCharacterData.atributos.strength = 13;
-            quizCharacterData.atributos.constitution = 14;
-            quizCharacterData.atributos.dexterity = 8;
-            quizCharacterData.atributos.intelligence = 10;
-            quizCharacterData.atributos.wisdom = 15;
-            quizCharacterData.atributos.charisma = 12;
             quizCharacterData.equipamentos = ['Maça', 'Escudo', 'Armadura de cota de malha', 'Símbolo Sagrado'];
             quizCharacterData.magias = ['Curar Ferimentos', 'Luz Sagrada'];
             quizCharacterData.habilidades = ['Domínio da Vida', 'Lançamento de Magia'];
@@ -539,18 +566,59 @@ function setQuizCharacterData(selectedClass) {
             quizCharacterData.ca = 19;
             break;
         case 'bruxo':
+            baseAttributes.strength = 10;
+            baseAttributes.constitution = 12;
+            baseAttributes.dexterity = 14;
+            baseAttributes.intelligence = 13;
+            baseAttributes.wisdom = 8;
+            baseAttributes.charisma = 15;
             quizCharacterData.hp = 8;
-            quizCharacterData.atributos.strength = 10;
-            quizCharacterData.atributos.constitution = 12;
-            quizCharacterData.atributos.dexterity = 14;
-            quizCharacterData.atributos.intelligence = 13;
-            quizCharacterData.atributos.wisdom = 8;
-            quizCharacterData.atributos.charisma = 15;
             quizCharacterData.equipamentos = ['Varinha', 'Livro de Sombras', 'Roupas Negras'];
             quizCharacterData.magias = ['Rajada Mística', 'Armadura de Agathys'];
             quizCharacterData.habilidades = ['Pacto das Trevas', 'Lâmina Pactual'];
             quizCharacterData.proficiencias = 'Armaduras: Leves, Armas: Simples';
             quizCharacterData.ca = 12;
+            break;
+    }
+
+    // Aplicar os bônus de atributos da raça
+    applyRaceBonus(quizCharacterData.race);
+
+    // Somar os valores finais dos atributos com os bônus da raça
+    quizCharacterData.atributos.strength = baseAttributes.strength + quizCharacterData.atributos.strength;
+    quizCharacterData.atributos.dexterity = baseAttributes.dexterity + quizCharacterData.atributos.dexterity;
+    quizCharacterData.atributos.constitution = baseAttributes.constitution + quizCharacterData.atributos.constitution;
+    quizCharacterData.atributos.intelligence = baseAttributes.intelligence + quizCharacterData.atributos.intelligence;
+    quizCharacterData.atributos.wisdom = baseAttributes.wisdom + quizCharacterData.atributos.wisdom;
+    quizCharacterData.atributos.charisma = baseAttributes.charisma + quizCharacterData.atributos.charisma;
+}
+
+function applyRaceBonus(race) {
+    // Inicializar os bônus de raça para zero
+    quizCharacterData.atributos.strength = 0;
+    quizCharacterData.atributos.dexterity = 0;
+    quizCharacterData.atributos.constitution = 0;
+    quizCharacterData.atributos.intelligence = 0;
+    quizCharacterData.atributos.wisdom = 0;
+    quizCharacterData.atributos.charisma = 0;
+
+    // Aplicar bônus específicos da raça
+    switch (race) {
+        case 'Humano':
+            quizCharacterData.atributos.strength += 1;
+            quizCharacterData.atributos.constitution += 1;
+            quizCharacterData.atributos.dexterity += 1;
+            quizCharacterData.atributos.intelligence += 1;
+            quizCharacterData.atributos.wisdom += 1;
+            quizCharacterData.atributos.charisma += 1;
+            break;
+        case 'Elfo':
+            quizCharacterData.atributos.dexterity += 2;
+            quizCharacterData.atributos.intelligence += 1;
+            break;
+        case 'Anão':
+            quizCharacterData.atributos.strength += 2;
+            quizCharacterData.atributos.constitution += 2;
             break;
     }
 }
@@ -566,7 +634,7 @@ function finalizeQuiz() {
 document.addEventListener('DOMContentLoaded', function() {
     const isFromQuiz = localStorage.getItem('quizCharacterData');
     if (isFromQuiz) {
-        disableFormFieldscalcularModificador(); // Desabilita os campos se a ficha vier do quiz
+        disableFormFields(); // Desabilita os campos se a ficha vier do quiz
     }
 });
 
