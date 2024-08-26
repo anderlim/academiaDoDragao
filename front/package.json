@@ -83,8 +83,10 @@
   "options": {
     "allowedHosts": [
       "localhost",
-      ".localhost"
+      ".localhost",
+      "academia-dragao.online",
+      ".academia-dragao.online"
     ],
-    "proxy": "https://localhost:3003/"
+    "proxy": "https://academia-dragao.online/"
   }
 }
