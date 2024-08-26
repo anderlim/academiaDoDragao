@@ -8,27 +8,27 @@ const BlogFooter = () => {
           <a href="https://flowbite.com/" className="hover:underline">
             AK SWE Services
           </a>
-          . All Rights Reserved.
+          . Todos direitos reservados.
         </span>
         <ul className="flex flex-wrap items-center mt-3 text-sm text-gray-500 dark:text-gray-400 sm:mt-0">
           <li>
             <a href="/" className="mr-4 hover:underline md:mr-6 ">
-              About
+              Sobre
             </a>
           </li>
           <li>
             <a href="#" className="mr-4 hover:underline md:mr-6">
-              Privacy Policy
+              Política de Privacidade
             </a>
           </li>
           <li>
             <a href="#" className="mr-4 hover:underline md:mr-6">
-              Licensing
+              Licença
             </a>
           </li>
           <li>
             <a href="#" className="hover:underline">
-              Contact
+              Contato
             </a>
           </li>
         </ul>
