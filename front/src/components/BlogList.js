@@ -30,7 +30,7 @@ const BlogList = () => {
               <article className="p-6 text-base bg-white border-t border-gray-200 dark:border-gray-700 dark:bg-gray-900">
                 <footer className="flex justify-between items-center"></footer>
                 <p className="text-gray-500 dark:text-gray-400">
-                  No posts yet... Create one!
+                  Sem posts ainda... Crie um!
                 </p>
               </article>
             )}
