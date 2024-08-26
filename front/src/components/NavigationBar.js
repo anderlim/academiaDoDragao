@@ -44,7 +44,7 @@ const NavigationBar = ({ user, handleThemeSwitch, theme }) => {
       </Navbar.Brand>
       <Navbar.Toggle className="justify-left" />
       <Navbar.Collapse>
-        <Navbar.Link href="http://127.0.0.1:5500/broadcast/index.html">
+        <Navbar.Link href="http://academia-dragao.online/broadcast/index.html">
           Academia do Dragão
         </Navbar.Link>
         <Navbar.Link as={Link} to="/about">

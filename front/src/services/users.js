@@ -1,5 +1,5 @@
 import axios from "axios";
-const baseUrl = "http://127.0.0.1:3003/api/users";
+const baseUrl = "http://academia-dragao.online/api/users";
 
 const getAll = async () => {
   const response = await axios.get(baseUrl);
