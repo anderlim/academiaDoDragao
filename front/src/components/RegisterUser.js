@@ -35,7 +35,7 @@ const RegisterUser = () => {
         dispatch(setNotification(notif, 4000));
       }
       const notif1 = {
-        message: `Conta registrada. Você poed logar agora.`,
+        message: `Conta registrada. Você pode logar agora.`,
         type: "success",
       };
       setUsername("");
