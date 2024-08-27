@@ -25,7 +25,7 @@ const SignIn = () => {
       navigate("/posts");
     } catch (exception) {
       const notif = {
-        message: "Wrong credentials",
+        message: "Credenciais incorretas",
         type: "error",
       };
       dispatch(setNotification(notif, 2500));
