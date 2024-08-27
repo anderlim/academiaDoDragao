@@ -64,18 +64,18 @@ const NavigationBar = ({ user, handleThemeSwitch, theme }) => {
 
         {user === null && (
           <Navbar.Link className="font-bold text-sky-400" as={Link} to="/login">
-            Log In
+            Logar
           </Navbar.Link>
         )}
         {user && (
           <div style={{ color: "#38BDF8" }}>
             <Dropdown label={`u/${user.username}`} inline={true}>
               <Dropdown.Item as={Link} to={`/users/${user.username}`}>
-                My Profile
+                Meu perfil
               </Dropdown.Item>
               {/* Apenas chamando 'logout' diretamente, sem passar o evento */}
               <Dropdown.Item onClick={logout}>
-                Sign out
+                Deslogar
               </Dropdown.Item>
             </Dropdown>
           </div>

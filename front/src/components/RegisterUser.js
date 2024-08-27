@@ -29,13 +29,13 @@ const RegisterUser = () => {
         setUsername("");
         setPassword("");
         const notif = {
-          message: `Username already taken. Try another.`,
-          type: "success",
+          message: `Usuário já existe. Tente outro.`,
+          type: "failure",
         };
         dispatch(setNotification(notif, 4000));
       }
       const notif1 = {
-        message: `Account registered. You may login now.`,
+        message: `Conta registrada. Você poed logar agora.`,
         type: "success",
       };
       setUsername("");
@@ -44,7 +44,7 @@ const RegisterUser = () => {
       navigate("/login");
     } catch (error) {
       const notif2 = {
-        message: `Unable to add account due to server issues. Try again later!`,
+        message: `Não foi possível adicionar uma conta dever a problemas de server. Tente denovo mais tarde!`,
         type: "failure",
       };
       dispatch(setNotification(notif2, 4000));
@@ -76,7 +76,7 @@ const RegisterUser = () => {
                     Usuário
                   </label>
                   <input
-                    type="text"
+                    type="email"
                     name="username"
                     value={username}
                     onChange={({ target }) => setUsername(target.value)}

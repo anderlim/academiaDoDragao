@@ -312,6 +312,48 @@ body {
     font-size: 0.9em !important;
 }
 
+/* Estilos responsivos para telas menores */
+@media (max-width: 768px) {
+    /* Reduz o tamanho da fonte do display e dos botões */
+    .calculator .display {
+        font-size: 1.5em;
+        padding: 8px; 
+    }
+
+    .calculator button {
+        padding: 15px; 
+        font-size: 1.2em;
+    }
+
+    /* Ajusta a largura dos botões para ocupar menos espaço */
+    .calculator .buttons .btn {
+        flex: 1 1 calc(33.33% - 10px);
+    }
+
+    /* Reduz o tamanho da modal para caber melhor na tela */
+    .modal-content {
+        width: 90%; 
+        height: auto;
+        max-height: 80vh; 
+        overflow-y: auto; 
+    }
+
+    /* Certifica-se de que o botão de fechar seja visível */
+    .modal .close {
+        font-size: 1.5em; 
+        position: absolute; 
+        top: 10px; 
+        right: 10px; 
+        z-index: 1000; 
+    }
+
+    /* Ajuste adicional para o histórico e outros elementos */
+    .calculator .historic {
+        max-height: 100px;
+    }
+}
+
+
 /* Login */
 /* CSS adicional para centralizar o formulário e adicionar enfeites */
 .login-wrapper {
@@ -382,4 +424,40 @@ body {
     display: block;
     text-align: left;
     margin-bottom: 0.5rem;
+}
+
+/* Estilos gerais para imagens */
+#dados-rpg, #ficha, .imgSize {
+    width: 25%;
+    height: auto;
+}
+
+/* Estilos responsivos para telas menores */
+@media (max-width: 768px) {
+    /* Ajustar tamanho das imagens para telas menores */
+    #dados-rpg, #ficha, .imgSize {
+        width: 50%; 
+        max-width: 200px; 
+        height: auto;
+    }
+
+    /* Ajustes de layout para garantir que o conteúdo não fique sobreposto */
+    .quiz-container {
+        width: 90%;
+        padding: 15px; 
+    }
+
+    /* Ajustes para a navegação e outros elementos */
+    .menu-icon {
+        margin-right: 4.5dvw;
+    }
+
+    /* Ajustes para garantir que o botão de fechar da calculadora seja acessível */
+    .modal .close {
+        font-size: 1.5em; 
+        position: absolute; 
+        top: 10px; 
+        right: 10px; 
+        z-index: 1000; 
+    }
 }

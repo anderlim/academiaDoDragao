@@ -177,3 +177,30 @@ a:hover {
     height: auto;
     margin-bottom: 10px;
 }
+/* Estilos responsivos para dispositivos móveis */
+@media (max-width: 768px) {
+    /* Aumenta o tamanho das imagens do quiz */
+    .race-option img, .class-option img, .house-option img {
+        width: 30dvw; 
+        height: auto;
+    }
+    
+    /* Ajustes adicionais de layout para dispositivos móveis */
+    .quiz-container {
+        width: 90%; 
+        padding: 15px; 
+    }
+    
+    /* Ajustes para garantir que o botão de fechar e outros elementos sejam acessíveis */
+    .modal-content {
+        width: 90%;
+        max-height: 80vh; 
+        overflow-y: auto;
+    }
+
+    .modal .close {
+        font-size: 1.5em; 
+        top: 10px;
+        right: 10px;
+    }
+}

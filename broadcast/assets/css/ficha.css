@@ -217,3 +217,12 @@ a:hover {
     border: none;
     border-top: 0.5px solid #676d71; 
 }
+
+/* Permitir rolagem horizontal para telas menores */
+@media (max-width: 768px) {
+    /* Ajustes para rolagem horizontal apenas na ficha */
+    .character-sheet {
+        width: 90dvw;
+    }
+    
+}
