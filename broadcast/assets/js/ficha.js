@@ -4,19 +4,14 @@ window.onload = function() {
     
     let characterData;
 
-    // Prioriza os dados do quiz se existirem, caso contrário, use os dados manuais
     if (quizCharacterData) {
-        // console.log('Dados carregados do Quiz:', quizCharacterData);
         characterData = quizCharacterData;
     } else if (manualCharacterData) {
-        // console.log('Dados carregados manualmente:', manualCharacterData);
         characterData = manualCharacterData;
     } else {
-        // console.error("Nenhum dado encontrado no localStorage.");
         return; // Sai da função se não houver dados
     }
 
-    // Preenchendo os campos básicos
     document.getElementById('race').value = characterData.race || '';
     document.getElementById('speed').value = convertFeetToMeters(characterData.deslocamento || 0);
     document.getElementById('class').value = characterData.class || '';
@@ -24,7 +19,6 @@ window.onload = function() {
     document.getElementById('hp').value = characterData.hp || 0;
     document.getElementById('armor-class').value = characterData.ca || 10;
 
-    // Preenchendo os atributos
     const attributes = characterData.atributos || {};
     document.getElementById('strength').value = attributes.strength || 0;
     document.getElementById('dexterity').value = attributes.dexterity || 0;
@@ -33,56 +27,32 @@ window.onload = function() {
     document.getElementById('wisdom').value = attributes.wisdom || 0;
     document.getElementById('charisma').value = attributes.charisma || 0;
 
-    // Preencher e marcar checkboxes de salvaguardas e perícias com base em classe e background
     updateSavesAndSkills(characterData);
 
-    // Preenchendo as magias, equipamentos e habilidades
     document.getElementById('spells').value = characterData.magias?.join(', ') || '';
     document.getElementById('equipment').value = characterData.equipamentos.concat(characterData.armas).join(', ') || '';
     document.getElementById('abilities').value = characterData.habilidades?.join(', ') || '';
 
-    // Preenchendo as proficiências em "Informações Gerais"
     document.getElementById('general-info').value = characterData.proficiencias || '';
 
-    // Adicionando event listeners para atualizar salvaguardas e perícias ao alterar os atributos
     document.querySelectorAll('.attributes input').forEach(input => {
         input.addEventListener('input', updateAllSavesAndSkills);
     });
-
-    // console.log("Ficha carregada com sucesso:", characterData);
 };
 
 window.addEventListener('beforeunload', function() {
-    // Remover os itens do localStorage relacionados à ficha
     localStorage.removeItem('characterData');
     localStorage.removeItem('quizCharacterData');
 });
 
-// Funções de cálculo de modificadores
 function calculateModifier(attributeValue) {
     return Math.floor((attributeValue - 10) / 2);
 }
 
-function calculateSave(attributeValue, isTrained) {
-    const modifier = calculateModifier(attributeValue);
-    return isTrained ? modifier + 2 : modifier;
-}
-
-function calculateSkill(attributeValue, isTrained) {
-    const modifier = calculateModifier(attributeValue);
-    return isTrained ? modifier + 2 : modifier;
-}
-
-// Função de conversão de deslocamento
 function convertFeetToMeters(feet) {
     return Math.round(feet * 0.3);
 }
 
-function convertMetersToFeet(meters) {
-    return Math.round(meters / 0.3);
-}
-
-// Função para aplicar ou remover o bônus de +2 com base no estado da checkbox
 function toggleBonus(skillId, attributeId) {
     const checkbox = document.getElementById(`${skillId}-checkbox`);
     const inputField = document.getElementById(skillId);
@@ -90,12 +60,11 @@ function toggleBonus(skillId, attributeId) {
 
     let baseValue = calculateModifier(attributeValue);
     if (checkbox.checked) {
-        baseValue += 2;  // Aplica o bônus de +2 se a checkbox estiver marcada
+        baseValue += 2;
     }
     inputField.value = baseValue;
 }
 
-// Função para atualizar todas as salvaguardas e perícias com base nos atributos e checkboxes
 function updateAllSavesAndSkills() {
     toggleBonus('save-strength', 'strength');
     toggleBonus('save-dexterity', 'dexterity');
@@ -122,9 +91,7 @@ function updateAllSavesAndSkills() {
     toggleBonus('insight', 'wisdom');
 }
 
-// Função para salvar as alterações feitas na ficha
 function saveEdits() {
-    // Captura os dados do formulário
     const editedData = {
         race: document.getElementById('race').value,
         class: document.getElementById('class').value,
@@ -196,23 +163,17 @@ function saveEdits() {
         }        
     };
 
-    // Salvar no localStorage
     localStorage.setItem('characterData', JSON.stringify(editedData));
-    
-    // Gerar o PDF
     generatePDF(editedData);
 }
 
-// Função para gerar o PDF
 function generatePDF(data) {
     const { jsPDF } = window.jspdf;
     const doc = new jsPDF();
 
-    // Adiciona título
     doc.setFontSize(20);
     doc.text("Ficha de Personagem D&D 5e", 20, 20);
 
-    // Adiciona informações básicas
     doc.setFontSize(12);
     doc.text(`Raça: ${data.race}`, 20, 30);
     doc.text(`Classe: ${data.class}`, 20, 40);
@@ -221,7 +182,6 @@ function generatePDF(data) {
     doc.text(`Deslocamento: ${convertFeetToMeters(data.deslocamento)} m`, 20, 70);
     doc.text(`Classe de Armadura: ${data.ca}`, 20, 80);
 
-    // Adiciona atributos
     doc.text(`Força: ${data.atributos.strength}`, 20, 90);
     doc.text(`Destreza: ${data.atributos.dexterity}`, 20, 100);
     doc.text(`Constituição: ${data.atributos.constitution}`, 20, 110);
@@ -229,7 +189,6 @@ function generatePDF(data) {
     doc.text(`Sabedoria: ${data.atributos.wisdom}`, 20, 130);
     doc.text(`Carisma: ${data.atributos.charisma}`, 20, 140);
 
-    // Adiciona salvaguardas
     doc.text(`Salvaguardas:`, 20, 150);
     doc.text(`- Força: ${data.salvaguardas.strength}`, 30, 160);
     doc.text(`- Destreza: ${data.salvaguardas.dexterity}`, 30, 170);
@@ -238,7 +197,6 @@ function generatePDF(data) {
     doc.text(`- Sabedoria: ${data.salvaguardas.wisdom}`, 30, 200);
     doc.text(`- Carisma: ${data.salvaguardas.charisma}`, 30, 210);
 
-    // Adiciona perícias
     doc.text(`Perícias:`, 20, 220);
     doc.text(`- Acrobacia: ${data.pericias.acrobatics}`, 30, 230);
     doc.text(`- Arcanismo: ${data.pericias.arcana}`, 30, 240);
@@ -246,11 +204,9 @@ function generatePDF(data) {
     doc.text(`- Enganação: ${data.pericias.deception}`, 30, 260);
     doc.text(`- História: ${data.pericias.history}`, 30, 270);
     doc.text(`- Intimidação: ${data.pericias.intimidation}`, 30, 280);
-    // Adicione mais perícias conforme necessário
 
-    let yPos = 290;  // Posição Y inicial para a próxima seção
+    let yPos = 290;
 
-    // Adiciona magias, equipamentos e habilidades
     if (yPos + 20 > 290) {
         doc.addPage();
         yPos = 20;
@@ -261,19 +217,16 @@ function generatePDF(data) {
     yPos += 10;
     doc.text(`Habilidades: ${data.habilidades.join(', ')}`, 20, yPos);
 
-     // Adiciona Informações Gerais
-     yPos += 10;
-     if (yPos + 20 > 290) {
-         doc.addPage();
-         yPos = 20;
-     }
-     doc.text(`Informações Gerais: ${data.informacoesGerais}`, 20, yPos);
+    yPos += 10;
+    if (yPos + 20 > 290) {
+        doc.addPage();
+        yPos = 20;
+    }
+    doc.text(`Informações Gerais: ${data.informacoesGerais}`, 20, yPos);
 
-    // Salva o PDF
     doc.save('ficha_personagem.pdf');
 }
 
-// Função para desabilitar todos os campos do formulário
 function disableFormFields() {
     const formFields = document.querySelectorAll('#character-form input, #character-form select, #character-form textarea');
     formFields.forEach(field => {
@@ -281,25 +234,29 @@ function disableFormFields() {
     });
 }
 
-// Evento de carregamento do DOM para verificar e desabilitar campos se necessário
 document.addEventListener('DOMContentLoaded', function() {
     const isFromQuiz = localStorage.getItem('quizCharacterData') !== null;
     if (isFromQuiz) {
-        disableFormFields(); // Desabilita os campos se a ficha vier do quiz
+        disableFormFields();
     }
 });
 
-// Função para obter salvaguardas e habilidades para marcar checkboxes de acordo com classe e background
 function getClassSaves(className) {
     const classSaves = {
         guerreiro: { strength: true, constitution: true },
         Patrulheiro: { dexterity: true, intelligence: true },
         mago: { intelligence: true, wisdom: true },
-        paladino: { strength: true, charisma: true },
+        paladino: { wisdom: true, charisma: true },
         ladino: { dexterity: true, intelligence: true },
         feiticeiro: { constitution: true, charisma: true },
         clerigo: { wisdom: true, charisma: true },
         bruxo: { wisdom: true, charisma: true },
+        Barbaro: { strength: true, constitution: true },  
+        Bardo: { dexterity: true, charisma: true },  
+        Druida: { intelligence: true, wisdom: true },  
+        Monge: { strength: true, dexterity: true },    
+        Bruxo: { wisdom: true, charisma: true },  
+        Feiticeiro: { constitution: true, charisma: true }, 
         // Adicione mais classes conforme necessário
     };
     return classSaves[className] || {};
@@ -308,13 +265,18 @@ function getClassSaves(className) {
 function getClassSkills(className) {
     const classSkills = {
         guerreiro: { athletics: true, intimidation: true },
-        Patrulheiro: { stealth: true, perception: true },
         mago: { arcana: true, history: true },
         paladino: { persuasion: true, religion: true },
-        ladino: { stealth: true, 'sleight-of-hand': true }, // Aqui foi ajustado
+        ladino: { stealth: true, 'sleight-of-hand': true, deception: true, investigation: true }, // Adicionadas mais habilidades típicas de Ladino
         feiticeiro: { arcana: true, persuasion: true },
-        clerigo: { medicine: true, persuasion: true },
-        bruxo: { arcana: true, deception: true },
+        clerigo: { medicine: true, persuasion: true, religion: true },  // Adicionado religião para Clérigo
+        bruxo: { arcana: true, deception: true, intimidation: true, investigation: true },  // Adicionadas mais habilidades típicas de Bruxo
+        Barbaro: { athletics: true, intimidation: true, survival: true },  // Adicionado para Bárbaro
+        Bardo: { acrobatics: true, deception: true, performance: true, persuasion: true, sleightOfHand: true },  // Adicionado para Bardo
+        Druida: { animalHandling: true, nature: true, perception: true, survival: true },  // Adicionado para Druida
+        Monge: { acrobatics: true, athletics: true, history: true, insight: true, religion: true },  // Adicionado para Monge
+        Patrulheiro: { animalHandling: true, athletics: true, insight: true, nature: true, perception: true, survival: true },  // Adicionado para Patrulheiro
+        Feiticeiro: { arcana: true, deception: true, intimidation: true, persuasion: true },  // Adicionado para Feiticeiro
         // Adicione mais classes conforme necessário
     };
     return classSkills[className] || {};
@@ -324,7 +286,7 @@ function getBackgroundSkills(backgroundName) {
     const backgroundSkills = {
         forasteiro: { survival: true, perception: true },
         nobre: { persuasion: true, history: true },
-        artesao: { 'sleight-of-hand': true, investigation: true }, // Aqui foi ajustado
+        artesao: { 'sleight-of-hand': true, investigation: true },
         heroiDoPovo: { athletics: true, survival: true },
         sabio: { arcana: true, history: true },
         soldado: { athletics: true, intimidation: true },
@@ -334,16 +296,14 @@ function getBackgroundSkills(backgroundName) {
     return backgroundSkills[backgroundName] || {};
 }
 
-// Função para atualizar salvaguardas e perícias de acordo com classe e background
 function updateSavesAndSkills(characterData) {
     const saves = getClassSaves(characterData.class);
     const skills = { ...getClassSkills(characterData.class), ...getBackgroundSkills(characterData.background) };
     markSavesCheckboxes(saves);
     markSkillsCheckboxes(skills);
-    updateAllSavesAndSkills(); // Atualiza os valores após marcar as checkboxes
+    updateAllSavesAndSkills();
 }
 
-// Funções para marcar checkboxes
 function markSavesCheckboxes(saves) {
     for (let save in saves) {
         if (saves[save]) {
