@@ -20,12 +20,15 @@ window.onload = function() {
     document.getElementById('armor-class').value = characterData.ca || 10;
 
     const attributes = characterData.atributos || {};
-    document.getElementById('strength').value = attributes.strength || 0;
-    document.getElementById('dexterity').value = attributes.dexterity || 0;
-    document.getElementById('constitution').value = attributes.constitution || 0;
-    document.getElementById('intelligence').value = attributes.intelligence || 0;
-    document.getElementById('wisdom').value = attributes.wisdom || 0;
-    document.getElementById('charisma').value = attributes.charisma || 0;
+    const raceBonuses = characterData.raceBonuses || {}; // Novo
+
+    // Aplicar bônus raciais aos atributos
+    document.getElementById('strength').value = (attributes.strength || 0) + (raceBonuses.strength || 0);
+    document.getElementById('dexterity').value = (attributes.dexterity || 0) + (raceBonuses.dexterity || 0);
+    document.getElementById('constitution').value = (attributes.constitution || 0) + (raceBonuses.constitution || 0);
+    document.getElementById('intelligence').value = (attributes.intelligence || 0) + (raceBonuses.intelligence || 0);
+    document.getElementById('wisdom').value = (attributes.wisdom || 0) + (raceBonuses.wisdom || 0);
+    document.getElementById('charisma').value = (attributes.charisma || 0) + (raceBonuses.charisma || 0);
 
     updateSavesAndSkills(characterData);
 

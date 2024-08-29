@@ -10,14 +10,78 @@ let characterData = {
     ca: 10,
     equipamentos: [],
     armas: [],
-    origin: 'manual'  // Indica que esses dados vieram da ficha manual
+    origin: 'manual',  // Indica que esses dados vieram da ficha manual
+    raceBonuses: {
+        strength: 0,
+        dexterity: 0,
+        constitution: 0,
+        intelligence: 0,
+        wisdom: 0,
+        charisma: 0
+    },
 };
+
+function applyRaceBonus(race) {
+    // Inicializar os bônus de raça para zero
+    characterData.raceBonuses = {
+        strength: 0,
+        dexterity: 0,
+        constitution: 0,
+        intelligence: 0,
+        wisdom: 0,
+        charisma: 0
+    };
+
+    // Aplicar bônus específicos da raça
+    switch (race) {
+        case 'humano':
+            characterData.raceBonuses.strength += 1;
+            characterData.raceBonuses.constitution += 1;
+            characterData.raceBonuses.dexterity += 1;
+            characterData.raceBonuses.intelligence += 1;
+            characterData.raceBonuses.wisdom += 1;
+            characterData.raceBonuses.charisma += 1;
+            break;
+        case 'elfo':
+            characterData.raceBonuses.dexterity += 2;
+            characterData.raceBonuses.intelligence += 1;
+            break;
+        case 'anao':
+            characterData.raceBonuses.strength += 2;
+            characterData.raceBonuses.constitution += 2;
+            break;
+        case 'draconato':
+            characterData.raceBonuses.strength += 2;
+            characterData.raceBonuses.charisma += 1;
+            break;
+        case 'meio-elfo':
+            characterData.raceBonuses.charisma += 2;
+            characterData.raceBonuses.strength += 1;
+            characterData.raceBonuses.constitution += 1;
+            break;
+        case 'tiefling':
+            characterData.raceBonuses.charisma += 2;
+            characterData.raceBonuses.intelligence += 1;
+            break;
+        case 'meio-orc':
+            characterData.raceBonuses.strength += 2;
+            characterData.raceBonuses.constitution += 1;
+            break;
+        case 'halfling':
+            characterData.raceBonuses.dexterity += 2;
+            break;
+        case 'gnomo':
+            characterData.raceBonuses.intelligence += 2;
+            break;
+    }
+}
 
 function updateRace() {
     const selectedRace = document.getElementById('race-select').value;
     if (selectedRace) {
         characterData.race = selectedRace;
         characterData.deslocamento = getRaceSpeed(selectedRace);
+        applyRaceBonus(selectedRace);  // Aplicar bônus raciais
         // console.log(`Raça: ${characterData.race}, Deslocamento: ${characterData.deslocamento}`);
     }
 }
@@ -71,25 +135,55 @@ function updateArmorClass() {
     let ca = 10; // Base CA
 
     switch (armor) {
-        case 'leather':
+        // Armaduras Leves
+        case 'acolchoada':
+        case 'couro':
             ca = 11 + dexterityModifier;
             break;
-        case 'chainmail':
-            ca = 16; // Chainmail não permite adicionar o modificador de destreza
+        case 'couro-batido':
+            ca = 12 + dexterityModifier;
             break;
-        case 'plate':
-            ca = 18; // Plate não permite adicionar o modificador de destreza
+        // Armaduras Médias (máx. +2 no modificador de Destreza)
+        case 'gibao-de-peles':
+            ca = 12 + Math.min(dexterityModifier, 2);
             break;
+        case 'camisao-de-malha':
+            ca = 13 + Math.min(dexterityModifier, 2);
+            break;
+        case 'brunea':
+            ca = 14 + Math.min(dexterityModifier, 2);
+            break;
+        case 'peitoral':
+            ca = 14 + Math.min(dexterityModifier, 2);
+            break;
+        case 'meia-armadura':
+            ca = 15 + Math.min(dexterityModifier, 2);
+            break;
+        // Armaduras Pesadas
+        case 'cota-de-aneis':
+            ca = 14;
+            break;
+        case 'cota-de-malha':
+            ca = 16;
+            break;
+        case 'cota-de-talas':
+            ca = 17;
+            break;
+        case 'placas':
+            ca = 18;
+            break;
+        case 'none':
+        default:
+            ca = 10 + dexterityModifier; // Caso nenhuma armadura seja escolhida
     }
 
     if (shield === 'yes') {
-        ca += 2;
+        ca += 2; // Adiciona bônus de escudo se estiver selecionado
     }
 
     characterData.ca = ca;
     // console.log('Classe de Armadura (CA):', characterData.ca);
 }
-
 
 function saveManualCharacter() {
     // Salvar os dados no localStorage para serem recuperados na página de ficha
@@ -102,48 +196,72 @@ function saveManualCharacter() {
 function getRaceSpeed(race) {
     const raceData = {
         humano: 30,
-        elfo: 35,
+        elfo: 30,
         anao: 25,
-        // Adicione mais raças conforme necessário
+        draconato: 30,
+        'meio-elfo': 30,
+        tiefling: 30,
+        'meio-orc': 30,
+        halfling: 25,
+        gnomo: 25
     };
     return raceData[race] || 30;
 }
 
 function getClassHP(className) {
     const classHP = {
-        guerreiro: 10,
-        arqueiro: 8,
-        mago: 6,
+        guerreiro: 10,     
+        Patrulheiro: 10,   
+        mago: 6,           
+        Barbaro: 12,      
+        Bardo: 8,          
+        Bruxo: 8,         
+        clerigo: 8,        
+        Druida: 8,         
+        Feiticeiro: 6,     
+        Ladino: 8,         
+        Monge: 8,          
+        Paladino: 10       
         // Adicione mais classes conforme necessário
     };
-    return classHP[className] || 8;
+    return classHP[className] || 8; // Retorna 8 como padrão se a classe não for encontrada
 }
+
 
 function getClassSaves(className) {
     const classSaves = {
         guerreiro: { strength: true, constitution: true },
-        Patrulheiro: { dexterity: true, intelligence: true },
+        Patrulheiro: { dexterity: true, strength: true },
         mago: { intelligence: true, wisdom: true },
-        paladino: { strength: true, charisma: true },
-        ladino: { dexterity: true, intelligence: true },
-        feiticeiro: { constitution: true, charisma: true },
+        Barbaro: { strength: true, constitution: true },
+        Bardo: { dexterity: true, charisma: true },
+        Bruxo: { wisdom: true, charisma: true },
         clerigo: { wisdom: true, charisma: true },
-        bruxo: { wisdom: true, charisma: true },
+        Druida: { intelligence: true, wisdom: true },
+        Feiticeiro: { constitution: true, charisma: true },
+        Ladino: { dexterity: true, intelligence: true },
+        Monge: { strength: true, dexterity: true },
+        Paladino: { wisdom: true, charisma: true }
         // Adicione mais classes conforme necessário
     };
     return classSaves[className] || {};
 }
 
+
 function getClassSkills(className) {
     const classSkills = {
-        guerreiro: { athletics: true, intimidation: true },
-        Patrulheiro: { stealth: true, perception: true },
+        guerreiro: { athletics: true, perception: true },
+        Patrulheiro: { insight: true, perception: true, survival: true },
         mago: { arcana: true, history: true },
-        paladino: { persuasion: true, religion: true },
-        ladino: { stealth: true, 'sleight-of-hand': true },
-        feiticeiro: { arcana: true, persuasion: true },
-        clerigo: { medicine: true, persuasion: true },
-        bruxo: { arcana: true, deception: true },
+        Barbaro: { athletics: true, insight: true },
+        Bardo: { acrobatics: true, performance: true, persuasion: true },
+        Bruxo: { arcana: true, deception: true },
+        clerigo: { medicine: true, religion: true },
+        Druida: { nature: true, survival: true },
+        Feiticeiro: { arcana: true, deception: true },
+        Ladino: { stealth: true, 'sleight-of-hand': true, deception: true,investigation: true },
+        Monge: { acrobatics: true, athletics: true },
+        Paladino: { athletics: true, persuasion: true }
         // Adicione mais classes conforme necessário
     };
     return classSkills[className] || {};
@@ -151,14 +269,19 @@ function getClassSkills(className) {
 
 function getBackgroundSkills(backgroundName) {
     const backgroundSkills = {
-        forasteiro: { survival: true, perception: true },
-        nobre: { persuasion: true, history: true },
-        artesao: { 'sleight-of-hand': true, investigation: true },
-        heroiDoPovo: { athletics: true, survival: true },
-        sabio: { arcana: true, history: true },
-        soldado: { athletics: true, intimidation: true },
+        acólito: { insight: true, religion: true },
+        artesao_de_guilda: { insight: true, persuasion: true },
         artista: { acrobatics: true, performance: true },
-        // Adicione mais backgrounds conforme necessário
+        charlatão: { deception: true, sleightOfHand: true },
+        criminoso: { deception: true, stealth: true },
+        eremita: { medicine: true, religion: true },
+        forasteiro: { athletics: true, survival: true },
+        herói_do_povo: { animalHandling: true, survival: true },
+        marinheiro: { athletics: true, perception: true },
+        nobre: { history: true, persuasion: true },
+        órfão: { stealth: true, sleightOfHand: true },
+        sábio: { arcana: true, history: true },
+        soldado: { athletics: true, intimidation: true }
     };
     return backgroundSkills[backgroundName] || {};
 }

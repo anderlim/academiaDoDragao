@@ -41,10 +41,16 @@
                     <option value="humano">Humano</option>
                     <option value="elfo">Elfo</option>
                     <option value="anao">Anão</option>
-                    <!-- Adicione mais opções -->
+                    <option value="draconato">Draconato</option>
+                    <option value="meio-elfo">Meio-elfo</option>
+                    <option value="tiefling">Tiefling</option>
+                    <option value="meio-orc">Meio-Orc</option>
+                    <option value="halfling">Halfling</option>
+                    <option value="gnomo">Gnomo</option>
+                    <!-- Adicione mais opções se necessário -->
                 </select>
             </section>
-    
+
             <!-- Seção de Classe -->
             <section class="manual-section">
                 <label for="class-select">Classe:</label>
@@ -53,19 +59,38 @@
                     <option value="guerreiro">Guerreiro</option>
                     <option value="Patrulheiro">Arqueiro</option>
                     <option value="mago">Mago</option>
-                    <!-- Adicione mais opções -->
+                    <option value="Barbaro">Bárbaro</option>
+                    <option value="Bardo">Bardo</option>
+                    <option value="Bruxo">Bruxo</option>
+                    <option value="clerigo">Clérigo</option>
+                    <option value="Druida">Druida</option>
+                    <option value="Feiticeiro">Feiticeiro</option>
+                    <option value="Ladino">Ladino</option>
+                    <option value="Monge">Monge</option>
+                    <option value="Paladino">Paladino</option>
+                    <!-- Adicione mais opções se necessário -->
                 </select>
             </section>
-    
+
             <!-- Seção de Background -->
             <section class="manual-section">
                 <label for="background-select">Background:</label>
                 <select id="background-select" onchange="updateBackground()">
                     <option value="">Selecione</option>
+                    <option value="acólito">Acólito</option>
+                    <option value="artesao_de_guilda">Artesão de Guilda</option>
+                    <option value="artista">Artista</option>
+                    <option value="charlatão">Charlatão</option>
+                    <option value="criminoso">Criminoso</option>
+                    <option value="eremita">Eremita</option>
                     <option value="forasteiro">Forasteiro</option>
+                    <option value="herói_do_povo">Herói do Povo</option>
+                    <option value="marinheiro">Marinheiro</option>
                     <option value="nobre">Nobre</option>
-                    <option value="artesao">Artesão</option>
-                    <!-- Adicione mais opções -->
+                    <option value="órfão">Órfão</option>
+                    <option value="sábio">Sábio</option>
+                    <option value="soldado">Soldado</option>
+                    <!-- Adicione mais opções se necessário -->
                 </select>
             </section>
     
@@ -99,13 +124,26 @@
             </section>
     
             <!-- Seção de Equipamentos -->
+            <!-- Seção de Armadura -->
             <section class="manual-section">
                 <label for="armor-select">Armadura:</label>
                 <select id="armor-select" name="armor-select" onchange="updateArmorClass()">
                     <option value="none">Nenhuma</option>
-                    <option value="leather">Couro (CA 11 + Mod. Destreza)</option>
-                    <option value="chainmail">Malha (CA 16)</option>
-                    <option value="plate">Pesada (CA 18)</option>
+                    <!-- Armaduras Leves -->
+                    <option value="acolchoada">Acolchoada (CA 11 + Mod. Destreza)</option>
+                    <option value="couro">Couro (CA 11 + Mod. Destreza)</option>
+                    <option value="couro-batido">Couro Batido (CA 12 + Mod. Destreza)</option>
+                    <!-- Armaduras Médias -->
+                    <option value="gibao-de-peles">Gibão de Peles (CA 12 + Mod. Destreza máx. +2)</option>
+                    <option value="camisao-de-malha">Camisão de Malha (CA 13 + Mod. Destreza máx. +2)</option>
+                    <option value="brunea">Brunea (CA 14 + Mod. Destreza máx. +2)</option>
+                    <option value="peitoral">Peitoral (CA 14 + Mod. Destreza máx. +2)</option>
+                    <option value="meia-armadura">Meia-Armadura (CA 15 + Mod. Destreza máx. +2)</option>
+                    <!-- Armaduras Pesadas -->
+                    <option value="cota-de-aneis">Cota de Anéis (CA 14)</option>
+                    <option value="cota-de-malha">Cota de Malha (CA 16)</option>
+                    <option value="cota-de-talas">Cota de Talas (CA 17)</option>
+                    <option value="placas">Placas (CA 18)</option>
                 </select>
             </section>
     
