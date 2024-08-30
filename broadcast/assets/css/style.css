@@ -304,6 +304,10 @@ body {
     gap: 10px;
 }
 
+.btn-full{
+    height: 5dvh;
+}
+
 .calculator .buttons .btn {
     flex: 1 1 calc(25% - 10px); /* Quatro botões por linha */
 }
