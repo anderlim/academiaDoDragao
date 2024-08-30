@@ -366,6 +366,42 @@ body {
     }
 }
 
+/* Estilos para altura de janela menor que 770px */
+@media (max-height: 770px) {
+    .modal-content {
+        height: 90vh; /* Ajusta a altura da modal para ocupar 90% da altura da viewport */
+        max-height: 90vh; /* Limita a altura máxima */
+        overflow-y: auto; /* Permite rolagem se o conteúdo for maior que a altura */
+    }
+
+    .modal .close {
+        font-size: 1.5em; /* Tamanho do botão de fechar */
+        position: absolute; /* Absoluto para reposicionar conforme necessário */
+        top: 10px; /* Espaçamento do topo para garantir visibilidade */
+        right: 10px; /* Espaçamento da direita */
+        z-index: 1000; /* Certifica-se de que está acima de outros elementos */
+    }
+
+    /* Ajusta a calculadora para caber melhor */
+    .calculator .display {
+        font-size: 1.5em; /* Diminui o tamanho do texto do display */
+        padding: 8px; /* Menor espaçamento interno */
+    }
+
+    .calculator button {
+        padding: 15px; /* Ajusta o tamanho dos botões */
+        font-size: 1.2em; /* Diminui o tamanho da fonte dos botões */
+    }
+
+    /* Garantir que todos os botões fiquem visíveis */
+    .calculator .buttons .btn {
+        flex: 1 1 calc(25% - 10px); /* Quatro botões por linha */
+    }
+
+    .calculator .historic {
+        max-height: 80px; /* Limita a altura do histórico */
+    }
+}
 
 /* Login */
 /* CSS adicional para centralizar o formulário e adicionar enfeites */
