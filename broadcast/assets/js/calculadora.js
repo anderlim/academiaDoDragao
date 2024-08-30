@@ -1,5 +1,5 @@
 function Calculadora() {
-    this.display = document.querySelector('.display'||'.display1');
+    this.display = document.querySelector('.display');
     const historicDiv = document.querySelector('.historic');
     const toggleHistoryButton = document.querySelector('.btn-hist');
     const clearHistoryButton = document.querySelector('.btn-clear-hist');
@@ -59,8 +59,8 @@ function Calculadora() {
 
     this.realizaConta = function () {
         let diceList = "";
-        let expression = this.display.value;
-        let dicesRollOut = new DiceRoll(this.display.value);
+        let expression = this.display.innerText; // Alterado de value para innerText
+        let dicesRollOut = new DiceRoll(this.display.innerText);
         let rollOut = dicesRollOut.executeRollOut();
         if (rollOut[0] !== false) {
             for (let i = 1; i < rollOut.length; i++) {
@@ -81,19 +81,19 @@ function Calculadora() {
             historicDiv.appendChild(line);
 
             // Atualizar o display com o resultado
-            this.display.value = rollOut[0];
+            this.display.innerText = rollOut[0]; // Alterado de value para innerText
         } else {
             historicDiv.innerText = `Não foi possível fazer a conta/lançamento`;
         }
     };
 
     this.clearDisplay = function () {
-        this.display.value = '';
+        this.display.innerText = ''; // Alterado de value para innerText
         this.display.focus(); // Adiciona o foco após limpar o display
     };
 
     this.deleteOne = function () {
-        this.display.value = this.display.value.slice(0, -1);
+        this.display.innerText = this.display.innerText.slice(0, -1); // Alterado de value para innerText
         this.display.focus(); // Adiciona o foco após deletar um caractere
     };
 
@@ -122,7 +122,11 @@ function Calculadora() {
     };
 
     this.btnParaDisplay = function (valor) {
-        this.display.value += valor;
+        if (this.display.innerText === '0') {
+            this.display.innerText = valor; // Substitui o zero inicial
+        } else {
+            this.display.innerText += valor; // Adiciona o valor ao display existente
+        }
         this.display.focus(); // Adiciona o foco após adicionar um valor ao display
     }
 
@@ -149,7 +153,7 @@ function Calculadora() {
     this.selectHistoric = function () {
         historicDiv.addEventListener('click', e => {
             if (e.target.tagName === 'P') {
-                this.display.value = e.target.innerText.split('=')[0].trim();
+                this.display.innerText = e.target.innerText.split('=')[0].trim(); // Alterado de value para innerText
                 this.display.focus(); // Adiciona o foco após selecionar um item do histórico
             }
         });
