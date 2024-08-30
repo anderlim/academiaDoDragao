@@ -59,7 +59,7 @@
     </div>
 
     <!-- Botão da Calculadora -->
-    <button id="toggleCalculator" class="circular-button"><i class="fas fa-dice-d20"></i></button>
+    <button id="toggleCalculator" class="circular-button1"><i class="fas fa-dice-d20"></i></button>
 
     <!-- Modal da Calculadora -->
     <div id="calculatorModal" class="modal calculator-container">
@@ -67,8 +67,8 @@
             <span id="closeCalculator" class="close">&times;</span>
             <div class="calculator">
                 <h2 class="h2-dicenator">Dicenator</h2>
-                <input type="text" class="display" placeholder="0" />
-                <div class="historic"></div> <!-- Adicionada result para exibir resultados e histórico -->
+                <div class="display">0</div> <!-- Removido contenteditable -->
+                <div class="historic"></div>
                 <div class="buttons">
                     <button class="btn btn-num">7</button>
                     <button class="btn btn-num">8</button>

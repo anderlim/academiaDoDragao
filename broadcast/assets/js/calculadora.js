@@ -3,13 +3,11 @@ function Calculadora() {
     const historicDiv = document.querySelector('.historic');
     const toggleHistoryButton = document.querySelector('.btn-hist');
     const clearHistoryButton = document.querySelector('.btn-clear-hist');
-    const finalButtons = document.querySelectorAll('.btn-full'); // Selecionar os botões finais
+    const finalButtons = document.querySelectorAll('.btn-full');
 
     this.inicia = function () {
-        this.carregarHistorico(); // Carrega o histórico salvo no localStorage
+        this.carregarHistorico();
         this.cliqueBotoes();
-        this.pressionaBackSpace();
-        this.pressionaEnter();
         this.toggleHistory();
         this.clearHistory();
         this.selectHistoric();
@@ -40,27 +38,10 @@ function Calculadora() {
         localStorage.setItem('historico', JSON.stringify(historico));
     };
 
-    this.pressionaEnter = function () {
-        this.display.addEventListener('keyup', e => {
-            if (e.key === 'Enter') { // Código da tecla Enter
-                this.realizaConta();
-            }
-        });
-    };
-
-    this.pressionaBackSpace = function () {
-        this.display.addEventListener('keydown', e => {
-            if (e.key === 'Backspace') { // Código da tecla Backspace
-                e.preventDefault(); // Previne o comportamento padrão
-                this.deleteOne();   // Chama a função deleteOne para apagar o último caractere
-            }
-        });
-    };
-
     this.realizaConta = function () {
         let diceList = "";
-        let expression = this.display.innerText; // Alterado de value para innerText
-        let dicesRollOut = new DiceRoll(this.display.innerText);
+        let expression = this.display.innerText; // Usando innerText
+        let dicesRollOut = new DiceRoll(this.display.innerText); // Usando innerText
         let rollOut = dicesRollOut.executeRollOut();
         if (rollOut[0] !== false) {
             for (let i = 1; i < rollOut.length; i++) {
@@ -70,31 +51,32 @@ function Calculadora() {
             const line = document.createElement('p');
             const resultado = `${expression} = ${rollOut[0]} (${diceList})`;
             p.innerText = resultado;
-            p.id = 'historic-item'; // Adiciona o ID ao elemento <p>
+            p.id = 'historic-item';
             line.innerText = `-----------------------------------------------`;
-            line.id = 'historic-line'; // Adiciona o ID ao elemento <p>
+            line.id = 'historic-line';
 
-            // Salvar no localStorage
             this.salvarNoHistorico(resultado);
 
             historicDiv.appendChild(p);
             historicDiv.appendChild(line);
 
             // Atualizar o display com o resultado
-            this.display.innerText = rollOut[0]; // Alterado de value para innerText
+            this.display.innerText = rollOut[0]; // Usando innerText
         } else {
             historicDiv.innerText = `Não foi possível fazer a conta/lançamento`;
         }
     };
 
     this.clearDisplay = function () {
-        this.display.innerText = ''; // Alterado de value para innerText
-        this.display.focus(); // Adiciona o foco após limpar o display
+        this.display.innerText = '0'; // Reseta para '0'
     };
 
     this.deleteOne = function () {
-        this.display.innerText = this.display.innerText.slice(0, -1); // Alterado de value para innerText
-        this.display.focus(); // Adiciona o foco após deletar um caractere
+        if (this.display.innerText.length > 1) {
+            this.display.innerText = this.display.innerText.slice(0, -1); // Remove o último caractere
+        } else {
+            this.display.innerText = '0'; // Reseta para '0' se restar um caractere
+        }
     };
 
     this.cliqueBotoes = function () {
@@ -116,8 +98,6 @@ function Calculadora() {
             if (el.classList.contains('btn-eq')) {
                 this.realizaConta();
             }
-
-            this.display.focus(); // Adiciona o foco após clicar em um botão
         });
     };
 
@@ -127,7 +107,6 @@ function Calculadora() {
         } else {
             this.display.innerText += valor; // Adiciona o valor ao display existente
         }
-        this.display.focus(); // Adiciona o foco após adicionar um valor ao display
     }
 
     this.toggleHistory = function () {
@@ -153,8 +132,7 @@ function Calculadora() {
     this.selectHistoric = function () {
         historicDiv.addEventListener('click', e => {
             if (e.target.tagName === 'P') {
-                this.display.innerText = e.target.innerText.split('=')[0].trim(); // Alterado de value para innerText
-                this.display.focus(); // Adiciona o foco após selecionar um item do histórico
+                this.display.innerText = e.target.innerText.split('=')[0].trim();
             }
         });
     };
