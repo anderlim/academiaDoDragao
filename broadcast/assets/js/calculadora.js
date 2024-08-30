@@ -5,12 +5,22 @@ function Calculadora() {
     const clearHistoryButton = document.querySelector('.btn-clear-hist');
     const finalButtons = document.querySelectorAll('.btn-full');
 
+    // Função para detectar se é um dispositivo móvel
+    this.isMobileDevice = function() {
+        return /Mobi|Android/i.test(navigator.userAgent);
+    };
+
     this.inicia = function () {
         this.carregarHistorico();
         this.cliqueBotoes();
         this.toggleHistory();
         this.clearHistory();
         this.selectHistoric();
+
+        if (!this.isMobileDevice()) {
+            this.pressionaBackSpace();
+            this.pressionaEnter();
+        }
 
         // Limpar localStorage ao fechar o site
         window.addEventListener('beforeunload', function () {
@@ -40,8 +50,8 @@ function Calculadora() {
 
     this.realizaConta = function () {
         let diceList = "";
-        let expression = this.display.innerText; // Usando innerText
-        let dicesRollOut = new DiceRoll(this.display.innerText); // Usando innerText
+        let expression = this.display.innerText;
+        let dicesRollOut = new DiceRoll(this.display.innerText);
         let rollOut = dicesRollOut.executeRollOut();
         if (rollOut[0] !== false) {
             for (let i = 1; i < rollOut.length; i++) {
@@ -60,8 +70,7 @@ function Calculadora() {
             historicDiv.appendChild(p);
             historicDiv.appendChild(line);
 
-            // Atualizar o display com o resultado
-            this.display.innerText = rollOut[0]; // Usando innerText
+            this.display.innerText = rollOut[0];
         } else {
             historicDiv.innerText = `Não foi possível fazer a conta/lançamento`;
         }
@@ -133,6 +142,24 @@ function Calculadora() {
         historicDiv.addEventListener('click', e => {
             if (e.target.tagName === 'P') {
                 this.display.innerText = e.target.innerText.split('=')[0].trim();
+            }
+        });
+    };
+
+    this.pressionaEnter = function () {
+        document.addEventListener('keydown', e => {
+            if (e.key === 'Enter') { // Código da tecla Enter
+                e.preventDefault();
+                this.realizaConta();
+            }
+        });
+    };
+
+    this.pressionaBackSpace = function () {
+        document.addEventListener('keydown', e => {
+            if (e.key === 'Backspace') { // Código da tecla Backspace
+                e.preventDefault();
+                this.deleteOne();
             }
         });
     };
