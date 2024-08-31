@@ -11,3 +11,19 @@ document.addEventListener('DOMContentLoaded', () => {
         calculatorModal.style.display = 'none';
     });
 });
+
+document.getElementById('helpButton').addEventListener('click', function() {
+    document.getElementById('helpPopup').style.display = 'block';
+});
+
+document.getElementById('closeHelp').addEventListener('click', function() {
+    document.getElementById('helpPopup').style.display = 'none';
+});
+
+// Fecha o popup se o usuário clicar fora do conteúdo do popup
+window.addEventListener('click', function(event) {
+    const helpPopup = document.getElementById('helpPopup');
+    if (event.target == helpPopup) {
+        helpPopup.style.display = 'none';
+    }
+});

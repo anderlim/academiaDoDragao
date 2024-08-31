@@ -18,8 +18,7 @@ function Calculadora() {
         this.selectHistoric();
 
         if (!this.isMobileDevice()) {
-            this.pressionaBackSpace();
-            this.pressionaEnter();
+            this.pressionaTeclado();
         }
 
         // Limpar localStorage ao fechar o site
@@ -146,20 +145,28 @@ function Calculadora() {
         });
     };
 
-    this.pressionaEnter = function () {
+    this.pressionaTeclado = function () {
         document.addEventListener('keydown', e => {
-            if (e.key === 'Enter') { // Código da tecla Enter
+            const key = e.key;
+
+            // Permitindo apenas números, operadores básicos e teclas específicas
+            if (!isNaN(key) || ['+', '-', '*', '/', 'd', '.'].includes(key)) {
+                this.btnParaDisplay(key);
+            }
+
+            if (key === 'Enter') {
                 e.preventDefault();
                 this.realizaConta();
             }
-        });
-    };
 
-    this.pressionaBackSpace = function () {
-        document.addEventListener('keydown', e => {
-            if (e.key === 'Backspace') { // Código da tecla Backspace
+            if (key === 'Backspace') {
                 e.preventDefault();
                 this.deleteOne();
+            }
+
+            // Prevenindo comportamento padrão para outras teclas
+            if (!['Enter', 'Backspace', '+', '-', '*', '/', 'd', '.', ...Array(10).keys().map(String)].includes(key)) {
+                e.preventDefault();
             }
         });
     };

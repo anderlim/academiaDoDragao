@@ -282,6 +282,7 @@ body {
 }
 
 .calculator .h2-dicenator {
+    margin-top: 1dvh;
     margin-bottom: 5px; /* Diminui o espaçamento abaixo dos títulos */
     color: #00bfff; /* Azul claro para os títulos */
 }
@@ -509,4 +510,55 @@ body {
         right: 10px; 
         z-index: 1000; 
     }
+}
+
+/* Estilo do span de ajuda */
+.help-button {
+    position: absolute;
+    top: 10px;
+    left: 10px; /* Lado oposto ao botão de fechar */
+    padding: 5px 10px;
+    color: white;
+    border-radius: 50%;
+    font-size: 16px;
+    cursor: pointer;
+    z-index: 6002; /* Certifique-se de que esteja acima da calculadora */
+}
+
+/* Estilo do popup de ajuda */
+.help-popup {
+    display: none; /* Escondido por padrão */
+    position: fixed;
+    z-index: 6003; /* Acima da calculadora e do botão de ajuda */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.7); /* Fundo semitransparente mais escuro */
+}
+
+.help-popup-content {
+    background-color: #333; /* Tom de cinza escuro para o fundo do popup */
+    color: white; /* Texto branco para contraste */
+    margin: 10% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 500px;
+    border-radius: 5px;
+    position: relative;
+    z-index: 6004; /* Mais alto para o conteúdo estar na frente */
+}
+
+.close-help {
+    color: #aaa;
+    float: right;
+    font-size: 24px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close-help:hover,
+.close-help:focus {
+    color: white;
 }
