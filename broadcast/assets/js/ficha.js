@@ -56,6 +56,11 @@ function convertFeetToMeters(feet) {
     return Math.round(feet * 0.3);
 }
 
+// Nova função para converter metros em pés
+function convertMetersToFeet(meters) {
+    return Math.round(meters / 0.3);
+}
+
 function toggleBonus(skillId, attributeId) {
     const checkbox = document.getElementById(`${skillId}-checkbox`);
     const inputField = document.getElementById(skillId);
