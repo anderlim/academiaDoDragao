@@ -148,28 +148,34 @@ function Calculadora() {
     this.pressionaTeclado = function () {
         document.addEventListener('keydown', e => {
             const key = e.key;
-
+            const isInputFocused = document.activeElement.tagName === 'INPUT' || document.activeElement.tagName === 'TEXTAREA';
+    
+            // Se o foco estiver em um input ou textarea, permitir o comportamento normal
+            if (isInputFocused) {
+                return; // Não faz nada, permite o comportamento normal
+            }
+    
             // Permitindo apenas números, operadores básicos e teclas específicas
             if (!isNaN(key) || ['+', '-', '*', '/', 'd', '.'].includes(key)) {
                 this.btnParaDisplay(key);
             }
-
+    
             if (key === 'Enter') {
                 e.preventDefault();
                 this.realizaConta();
             }
-
+    
             if (key === 'Backspace') {
                 e.preventDefault();
                 this.deleteOne();
             }
-
+    
             // Prevenindo comportamento padrão para outras teclas
             if (!['Enter', 'Backspace', '+', '-', '*', '/', 'd', '.', ...Array(10).keys().map(String)].includes(key)) {
                 e.preventDefault();
             }
         });
-    };
+    };    
 }
 
 const calculadora = new Calculadora();
