@@ -170,12 +170,16 @@ function Calculadora() {
                 this.deleteOne();
             }
     
-            // Prevenindo comportamento padrão para outras teclas
-            if (!['Enter', 'Backspace', '+', '-', '*', '/', 'd', '.', ...Array(10).keys().map(String)].includes(key)) {
+            // Verificando se a tecla pressionada é uma tecla de função (F1 a F12)
+            const isFunctionKey = (key.startsWith('F') && !isNaN(key.slice(1)) && key.slice(1) >= 1 && key.slice(1) <= 12);
+    
+            // Prevenindo comportamento padrão para outras teclas, mas permitindo Ctrl, Alt, Shift, F1-F12
+            if (!['Enter', 'Backspace', '+', '-', '*', '/', 'd', '.', ...Array(10).keys().map(String)].includes(key) && !e.ctrlKey && !e.altKey && !e.metaKey && !isFunctionKey) {
                 e.preventDefault();
             }
         });
-    };    
+    };
+    
 }
 
 const calculadora = new Calculadora();

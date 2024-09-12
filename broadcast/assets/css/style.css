@@ -563,3 +563,28 @@ body {
 .close-help:focus {
     color: white;
 }
+
+.size5{
+    font-size: 2.2rcap;
+}
+
+
+.size6{
+    font-size: 1.8rcap;
+}
+
+.atributoSize{
+    width: 5%;
+}
+
+.testeSize{
+    width: 10%;
+}
+
+.combateSize{
+    width: 15%;
+}
+
+.magiasSize{
+    width: 50%;
+}

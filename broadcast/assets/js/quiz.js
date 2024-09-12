@@ -186,7 +186,7 @@ function chooseOption(option) {
     step1.style.display = 'none';
     quizCharacterData.universe = option;
 
-    if (option === 'lordOfTheRings' || option === 'dungeonsAndDragons') {
+    if (option === 'dungeonsAndDragons') {
         step2.style.display = 'block';
         raceOptions.innerHTML = `
             <h2>Qual raça você prefere em ${option === 'lordOfTheRings' ? 'Senhor dos Anéis' : 'Dungeons & Dragons'}?</h2>
@@ -236,7 +236,42 @@ function chooseOption(option) {
                 <button onclick="chooseRace('Gnomo')">Gnomo</button>
             </div>
         `;
-    } else if (option === 'harryPotter') {
+    } else if (option === 'lordOfTheRings') {
+        step2.style.display = 'block';
+        raceOptions.innerHTML = `
+            <h2>Qual raça você prefere em Senhor dos Anéis?</h2>
+            <div class="race-option">
+                <img src="./images/humano.png" alt="Humano">
+                <p>Humanos são conhecidos por sua incrível adaptabilidade e diversidade. Escolher essa raça dá um bônus de +1 em todos os atributos, e o deslocamento é de 9 metros.</p>
+                <button onclick="chooseRace('Humano')">Humano</button>
+            </div>
+            <div class="race-option">
+                <img src="./images/elfo.png" alt="Elfo">
+                <p>Elfos são graciosos, ágeis e têm uma afinidade natural com a natureza e a magia. Escolher essa raça dá um bônus de +2 Destreza e +1 Inteligência, além de um deslocamento de 9 metros.</p>
+                <button onclick="chooseRace('Elfo')">Elfo</button>
+            </div>
+            <div class="race-option">
+                <img src="./images/anao.png" alt="Anão">
+                <p>Anões são conhecidos por sua robustez, resiliência e habilidades em combate e artesanato. Escolher essa raça dá um bônus de +2 Constituição e +2 Força, e o deslocamento é de 7,5 metros.</p>
+                <button onclick="chooseRace('Anão')">Anão</button>
+            </div>
+            <div class="race-option">
+                <img src="./images/halfling.png" alt="Halfiling">
+                <p>Halflings(Hobbits) são pequenos, mas corajosos e sortudos. Conhecidos por sua natureza despreocupada e amigável, eles têm um espírito resiliente e são mestres em escapar de perigos. Escolher essa raça dá um bônus de +2 Destreza e o deslocamento é de 7,5 metros. Halflings possuem uma habilidade única de re-rolar um dado 1 em jogadas de ataque, testes de habilidade, ou testes de resistência.</p>
+                <button onclick="chooseRace('Halfiling')">Halfling (Hobbit)</button>
+            </div>
+            <div class="race-option">
+                <img src="./images/meio.png" alt="Meio elfo">
+                <p>Meio-elfos combinam a adaptabilidade dos humanos com a graça dos elfos, o que os torna carismáticos e versáteis. Eles são conhecidos por sua capacidade de se encaixar em diversos ambientes e são muitas vezes mediadores naturais. Escolher essa raça dá um bônus de +2 Carisma, +1 em Força e +1 Constituição. O deslocamento é de 9 metros, e eles possuem visão no escuro e resistência a encantamentos.</p>
+                <button onclick="chooseRace('Meio-elfo')">Meio elfo</button>
+            </div>
+            <div class="race-option">
+                <img src="./images/orc.png" alt="Meio Orc">
+                <p>Meio-orcs possuem uma força física impressionante e um espírito indomável, resultado da união entre humanos e orcs. Eles são corajosos e destemidos, conhecidos por sua ferocidade em combate. Escolher essa raça dá um bônus de +2 Força, +1 Constituição e o deslocamento é de 9 metros. Meio-orcs têm a habilidade de resistir à morte uma vez por descanso longo e possuem vantagens em ataques críticos.</p>
+                <button onclick="chooseRace('Meio-Orc')">Meio Orc</button>
+            </div>
+        `;
+    }else if (option === 'harryPotter') {
         quizCharacterData.race = 'Humano';
         quizCharacterData.deslocamento = 9;
 
@@ -278,39 +313,39 @@ function chooseRace(selectedRace) {
     // Define o deslocamento baseado na raça escolhida
     switch (selectedRace) {
         case 'Humano':
-            quizCharacterData.deslocamento = 9;
+            quizCharacterData.deslocamento = 30;
             applyRaceBonus('Humano');
             break;
         case 'Elfo':
-            quizCharacterData.deslocamento = 9;
+            quizCharacterData.deslocamento = 30;
             applyRaceBonus('Elfo');
             break;
         case 'Anão':
-            quizCharacterData.deslocamento = 7,5;
+            quizCharacterData.deslocamento = 25;
             applyRaceBonus('Anão');
             break;
             case 'Draconato':
-            quizCharacterData.deslocamento = 9;
+            quizCharacterData.deslocamento = 30;
             applyRaceBonus('Draconato');
             break;
         case 'Meio-elfo':
-            quizCharacterData.deslocamento = 9;
+            quizCharacterData.deslocamento = 30;
             applyRaceBonus('Meio-elfo');
             break;
         case 'Halfiling':
-            quizCharacterData.deslocamento = 7,5;
+            quizCharacterData.deslocamento = 25;
             applyRaceBonus('Halfiling');
             break;
             case 'Tiefling':
-            quizCharacterData.deslocamento = 9;
+            quizCharacterData.deslocamento = 30;
             applyRaceBonus('Tiefling');
             break;
         case 'Meio-Orc':
-            quizCharacterData.deslocamento = 9;
+            quizCharacterData.deslocamento = 30;
             applyRaceBonus('Meio-Orc');
             break;
         case 'Gnomo':
-            quizCharacterData.deslocamento = 7,5;
+            quizCharacterData.deslocamento = 25;
             applyRaceBonus('Gnomo');
             break;
     }

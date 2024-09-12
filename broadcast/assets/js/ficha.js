@@ -20,7 +20,7 @@ window.onload = function() {
     document.getElementById('armor-class').value = characterData.ca || 10;
 
     const attributes = characterData.atributos || {};
-    const raceBonuses = characterData.raceBonuses || {}; // Novo
+    const raceBonuses = characterData.raceBonuses || {};
 
     // Aplicar bônus raciais aos atributos
     document.getElementById('strength').value = (attributes.strength || 0) + (raceBonuses.strength || 0);
@@ -53,12 +53,21 @@ function calculateModifier(attributeValue) {
 }
 
 function convertFeetToMeters(feet) {
-    return Math.round(feet * 0.3);
+    // Verifica diretamente se os pés são 30 ou 25 para garantir valores corretos
+    if (feet === 30) {
+        return 9;  // 30 pés = 9 metros
+    } else if (feet === 25) {
+        return 7.5;  // 25 pés = 7.5 metros
+    }
+    
+    // Para outros valores, faz a conversão normal
+    const meters = feet * 0.3048;
+    return Math.round(meters * 10) / 10; // Arredonda para uma casa decimal
 }
 
 // Nova função para converter metros em pés
 function convertMetersToFeet(meters) {
-    return Math.round(meters / 0.3);
+    return Math.round(meters / 0.3048);  // Converte metros para pés, mas arredonda corretamente
 }
 
 function toggleBonus(skillId, attributeId) {
