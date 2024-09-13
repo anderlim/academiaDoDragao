@@ -273,7 +273,7 @@ function chooseOption(option) {
         `;
     }else if (option === 'harryPotter') {
         quizCharacterData.race = 'Humano';
-        quizCharacterData.deslocamento = 9;
+        quizCharacterData.deslocamento = 30;
 
         step2.style.display = 'block';
         raceOptions.innerHTML = `
@@ -428,14 +428,14 @@ function chooseHouse(selectedHouse) {
 
     switch (selectedHouse) {
         case 'Grifinória':
-            quizCharacterData.class = 'feiticeiro';
+            quizCharacterData.class = 'Feiticeiro';
             applyRaceBonus('Humano'); // A raça é sempre Humano nas casas de Harry Potter
-            setQuizCharacterData('feiticeiro');
+            setQuizCharacterData('Feiticeiro');
             break;
         case 'Sonserina':
-            quizCharacterData.class = 'bruxo';
+            quizCharacterData.class = 'Bruxo';
             applyRaceBonus('Humano');
-            setQuizCharacterData('bruxo');
+            setQuizCharacterData('Bruxo');
             break;
         case 'Corvinal':
             quizCharacterData.class = 'mago';

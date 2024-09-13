@@ -263,11 +263,10 @@ function getClassSaves(className) {
         guerreiro: { strength: true, constitution: true },
         Patrulheiro: { dexterity: true, intelligence: true },
         mago: { intelligence: true, wisdom: true },
-        paladino: { wisdom: true, charisma: true },
-        ladino: { dexterity: true, intelligence: true },
+        Paladino: { wisdom: true, charisma: true },
+        Ladino: { dexterity: true, intelligence: true },
         feiticeiro: { constitution: true, charisma: true },
         clerigo: { wisdom: true, charisma: true },
-        bruxo: { wisdom: true, charisma: true },
         Barbaro: { strength: true, constitution: true },  
         Bardo: { dexterity: true, charisma: true },  
         Druida: { intelligence: true, wisdom: true },  
@@ -283,11 +282,10 @@ function getClassSkills(className) {
     const classSkills = {
         guerreiro: { athletics: true, intimidation: true },
         mago: { arcana: true, history: true },
-        paladino: { persuasion: true, religion: true },
-        ladino: { stealth: true, 'sleight-of-hand': true, deception: true, investigation: true }, // Adicionadas mais habilidades típicas de Ladino
-        feiticeiro: { arcana: true, persuasion: true },
+        Paladino: { persuasion: true, religion: true },
+        Ladino: { stealth: true, 'sleight-of-hand': true, deception: true, investigation: true }, // Adicionadas mais habilidades típicas de Ladino
         clerigo: { medicine: true, persuasion: true, religion: true },  // Adicionado religião para Clérigo
-        bruxo: { arcana: true, deception: true, intimidation: true, investigation: true },  // Adicionadas mais habilidades típicas de Bruxo
+        Bruxo: { arcana: true, deception: true, intimidation: true, investigation: true },  // Adicionadas mais habilidades típicas de Bruxo
         Barbaro: { athletics: true, intimidation: true, survival: true },  // Adicionado para Bárbaro
         Bardo: { acrobatics: true, deception: true, performance: true, persuasion: true, sleightOfHand: true },  // Adicionado para Bardo
         Druida: { animalHandling: true, nature: true, perception: true, survival: true },  // Adicionado para Druida
